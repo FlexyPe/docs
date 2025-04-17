@@ -1,11 +1,12 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "theme": "willow",
+  "name": "FlexyPe",
+  "description": "Simple 1-click checkout built for Shopify. Boost conversions with a seamless, high-converting experience",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#2f72ff",
+    "light": "#5c94ff",
+    "dark": "#255acc"
   },
   "favicon": "/favicon.svg",
   "navigation": {
