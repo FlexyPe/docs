@@ -1,0 +1,43 @@
+---
+title: 'Cashfree'
+---
+
+> Steps to set up a Webhook in Cashfree Dashboard
+
+Follow these steps to configure webhooks for successful payments, failed payments, and refunds in the Cashfree dashboard:
+
+<Steps>
+  <Step title="Access Cashfree Dashboard">
+    Log in to your Cashfree Dashboard using your credentials.
+  </Step>
+
+  <Step title="Create a Webhook for Payments">
+    <img
+      className="rounded-lg"
+      src="/images/dashboard.png"
+      alt="Hero Dark"
+    />
+    - Click on the **Create Webhook** button.
+    - In the webhook Endpoint URL field, paste the following URL:
+    ```
+    https://api.flexype.in/v1/public/pg/payu/webhook
+    ```
+    - Click **Save** to finalize the webhook.
+  </Step>
+  <Step title="Retrieve and Configure App ID & Secret Key">
+    <img
+      className="rounded-lg"
+      src="/images/dashboard.png"
+      alt="Hero Dark"
+    />
+    - Click on Developers on the top right corner.
+    - Go to the [Payments](https://dashboard.flexype.io/settings/payment) in the FlexyPe dashboard.
+    - Copy the **App ID** and **Secret Key** from the PayU Dashboard and paste them.
+  </Step>
+  <Step title="Edit the Webhook (If Needed)">
+    If any modifications are required, click on the "Edit" button next to the webhook.
+  </Step>
+</Steps>
+
+<Warning>Do not delete the credentials if the payment provider is in use</Warning>
+

@@ -1,0 +1,66 @@
+---
+title: 'PayU'
+---
+
+> Steps to set up a Webhook in PayU Dashboard
+
+Follow these steps to configure webhooks for successful payments, failed payments, and refunds in the PayU dashboard:
+
+<Steps>
+  <Step title="Access PayU Dashboard">
+    Log in to your PayU Dashboard using your credentials.
+  </Step>
+
+  <Step title="Navigate to Webhook Settings">
+    - Go to Settings in the dashboard.
+    - Select Webhooks from the available options.
+  </Step>
+
+  <Step title="Create a Webhook for Successful Payments">
+    <img
+      className="rounded-lg"
+      src="/images/dashboard.png"
+      alt="Hero Dark"
+    />
+    - Click on the **Create Webhook** button.
+    - In the event type, select **Payments – Successful**.
+    - In the webhook URL field, paste the following URL:
+    ```
+    https://api.flexype.in/v1/public/pg/payu/webhook
+    ```
+    - Click **Save** to finalize the webhook.
+  </Step>
+  <Step title="Create a Webhook for Failed Payments">
+    - Click on the **Create Webhook** button.
+    - In the event type, select **Payments – Failed**.
+    - In the webhook URL field, paste the following URL:
+    ```
+    https://api.flexype.in/v1/public/pg/payu/webhook
+    ```
+    - Click **Save** to finalize the webhook.
+  </Step>
+  <Step title="Create a Webhook for Refunds">
+    - Click on the **Create Webhook** button.
+    - In the event type, select **Refunds**.
+    - In the webhook URL field, paste the following URL:
+    ```
+    https://api.flexype.in/v1/public/pg/payu/webhook
+    ```
+    - Click **Save** to finalize the webhook.
+  </Step>
+  <Step title="Retrieve and Configure API Key">
+    <img
+      className="rounded-lg"
+      src="/images/dashboard.png"
+      alt="Hero Dark"
+    />
+    - Go to the [Payments](https://dashboard.flexype.io/settings/payment) in the FlexyPe dashboard.
+    - Copy the **Key** and **Salt** from the PayU Dashboard and paste them.
+  </Step>
+  <Step title="Edit the Webhooks (If Needed)">
+    If any modifications are required, click on the "Edit" button next to the webhook.
+  </Step>
+</Steps>
+
+<Warning>Do not delete the credentials if the payment provider is in use</Warning>
+

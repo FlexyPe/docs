@@ -15,8 +15,25 @@
         "group": "Get Started",
         "pages": [
           "introduction",
-          "quickstart",
+          "onboarding",
           "development"
+        ]
+      },
+      {
+        "group": "Integrations",
+        "pages": [
+          {
+            "group": "Payment Providers",
+            "pages": ["integrations/payment/payu", "integrations/payment/cashfree"]
+          },
+          {
+            "group": "Analytics",
+            "pages": [
+              "/integrations/analytics/meta",
+              "/integrations/analytics/google-ads",
+              "/integrations/analytics/google-analytics"
+            ]
+          }
         ]
       },
       {
