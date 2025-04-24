@@ -14,9 +14,7 @@
       {
         "group": "Get Started",
         "pages": [
-          "introduction",
-          "onboarding",
-          "development"
+          "introduction"
         ]
       },
       {
