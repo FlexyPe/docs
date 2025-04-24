@@ -8,19 +8,27 @@
     "light": "#5c94ff",
     "dark": "#255acc"
   },
-  "favicon": "/favicon.ico",
+  "favicon": "/favicon.svg",
   "navigation": {
     "groups": [
       {
         "group": "Get Started",
-        "pages": ["introduction"]
+        "pages": ["introduction", "onboarding"]
       },
       {
         "group": "Integrations",
         "pages": [
           {
             "group": "Payment Providers",
-            "pages": ["integrations/payment/payu", "integrations/payment/cashfree"]
+            "pages": [
+              "integrations/payment/razorpay",
+              "integrations/payment/cc-avenue",
+              "integrations/payment/phonepe",
+              "integrations/payment/cashfree",
+              "integrations/payment/easebuzz",
+              "integrations/payment/xpay",
+              "integrations/payment/snapmint"
+            ]
           },
           {
             "group": "Analytics",
@@ -30,17 +38,6 @@
               "/integrations/analytics/google-analytics"
             ]
           }
-        ]
-      },
-      {
-        "group": "Essentials",
-        "pages": [
-          "essentials/markdown",
-          "essentials/code",
-          "essentials/images",
-          "essentials/settings",
-          "essentials/navigation",
-          "essentials/reusable-snippets"
         ]
       }
     ],
