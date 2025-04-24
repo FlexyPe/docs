@@ -8,7 +8,7 @@
     "light": "#5c94ff",
     "dark": "#255acc"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/flexy-favicon.svg",
   "navigation": {
     "groups": [
       {
@@ -57,8 +57,8 @@
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/flexy-light.svg",
+    "dark": "/logo/flexy-dark.svg"
   },
   "navbar": {
     "links": [
