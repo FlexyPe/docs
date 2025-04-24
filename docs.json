@@ -3,12 +3,22 @@
   "theme": "mint",
   "name": "FlexyPe",
   "description": "Simple 1-click checkout built for Shopify. Boost conversions with a seamless, high-converting experience",
+  "favicon": "/flexy-favicon.svg",
+  "logo": {
+    "light": "/logo/flexy-light.svg",
+    "dark": "/logo/flexy-dark.svg"
+  },
+  "appearance": {
+    "default": "system"
+  },
   "colors": {
     "primary": "#2f72ff",
     "light": "#5c94ff",
     "dark": "#255acc"
   },
-  "favicon": "/flexy-favicon.svg",
+  "background": {
+    "decoration": "grid"
+  },
   "navigation": {
     "groups": [
       {
@@ -55,10 +65,6 @@
         }
       ]
     }
-  },
-  "logo": {
-    "light": "/logo/flexy-light.svg",
-    "dark": "/logo/flexy-dark.svg"
   },
   "navbar": {
     "links": [
