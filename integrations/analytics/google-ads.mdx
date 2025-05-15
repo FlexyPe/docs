@@ -2,35 +2,77 @@
 title: 'Google Ads'
 ---
 
-> Steps to integrate Google Ads in FlexyPe Dashboard
-
 Integrating Google Ads with FlexyPe enables you to track key events on your website and optimize your ads, keywords, ad groups, and campaigns based on these conversion events. By adding conversion tags to the FlexyPe checkout, you can effortlessly track purchase conversions and make data-driven decisions for your marketing strategy.
 
+## Getting the Conversion ID and Label from Google Ads
+
 <Steps>
-  <Step title="Access Conversions in Google Ads">
+  <Step title="Accessing the Google Ads dashboard.">
     <img
       className="rounded-lg"
-      src="/images/dashboard.png"
+      src="/images/integrations/analytics/gAds-1.png"
       alt="Hero Dark"
     />
-    - Log in to your Google Ads account.
-    - Navigate to **Tools & Settings** and click on **Conversions** under the Measurements column.
-    - Select your **Purchase** conversion event and click on the associated conversion action.
-    - Under Tag setup, click on **Install the tag yourself**
-    - Copy the Conversion ID and label from the snippet here ◦ Conversion ID: AW-321XXX235 ◦ Label: vSRhCPnGs-XXXuSrpkB
-    <Note>Conversion API token is known as Label</Note>
+    - Log in to [Google Ads](https://ads.google.com/nav/login).
+    - Click on Goals on the left panel and select Events Manager.
+    - Navigate to Summary under Conversion.
   </Step>
-  <Step title="Integrate with FlexyPe">
+  <Step title="Select Your conversion event">
     <img
       className="rounded-lg"
-      src="/images/dashboard.png"
+      src="/images/integrations/analytics/gAds-2.png"
       alt="Hero Dark"
     />
-    - Go to [Google Ads](https://dashboard.flexype.io/settings/integrations/google-ads) in the FlexyPe dashboard.
-    - Click on the **Add conversion action** button.
-    - Paste the **Conversion ID** & **Conversion API Token** into the designated field.
-    - Click **Save** to finalize the Conversion Action.
+    - Select your Purchase conversion event.
+    - On the Details tab scroll down to Tag Setup.
+  </Step>
+  <Step title="Get the Conversion ID and Label">
+    <img
+      className="rounded-lg"
+      src="/images/integrations/analytics/gAds-3.png"
+      alt="Hero Dark"
+    />
+    - Expand the Tag Setup dropdown and select Use Google Tag Manager
+    - Copy the **Conversion ID** and **Conversion Label** and keep it handy for configuration.
   </Step>
 </Steps>
 
-With these steps completed, your Google Ads account will be seamlessly integrated with FlexyPe, allowing you to effectively track and optimize your purchase conversion events. This setup not only enhances your advertising strategy but also ensures you’re making the most out of every marketing dollar.
+## Integrate Meta Pixel with FlexyPe
+
+<Steps>
+  <Step title="Access Meta Pixels Integration on your FlexyPe Dashboard.">
+    <img
+      className="rounded-lg"
+      src="/images/integrations/analytics/gAds-4.png"
+      alt="Hero Dark"
+    />
+    - Log in to your [FlexyPe Dashboard](https://dashboard.flexype.io).
+    - Click on the Settings menu and select Integrations.
+    - Navigate to Google Ads.
+  </Step>
+  <Step title="Configure a new conversion action">
+    <img
+      className="rounded-lg"
+      src="/images/integrations/analytics/gAds-5.png"
+      alt="Hero Dark"
+    />
+    - Click on the Add new conversion action.
+    - Paste the copied **Conversion ID** into the designated field.
+    <Note>
+        Conversion ID must include the <code>AW-</code> prefix (e.g., <code>AW-16760929279</code>).
+    </Note>
+    - Paste the copied **Conversion Label** into the designated field and turn on the API Status.
+    - Click Save to finalize the conversion action.
+  </Step>
+  <Step title="Finish Setup and Start Tracking">
+   <img
+     className="rounded-lg"
+     src="/images/integrations/analytics/gAds-6.png"
+     alt="Hero Dark"
+   />
+   - Once you've added the conversion action, your setup is complete.
+   - FlexyPe is now connected to your Shopify store and ready to track conversions from Google Ads.
+  </Step>
+</Steps>
+
+By following these steps, you’ll successfully integrate Google Ads with FlexyPe, enabling seamless conversion tracking and improved campaign performance.
