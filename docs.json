@@ -36,6 +36,7 @@
               "integrations/payment/phonepe",
               "integrations/payment/cashfree",
               "integrations/payment/easebuzz",
+              "integrations/payment/payu",
               "integrations/payment/xpay",
               "integrations/payment/snapmint"
             ]
