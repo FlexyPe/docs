@@ -1,58 +1,89 @@
 ---
-title: 'Meta'
+title: 'Meta Pixels'
 ---
-
-> Steps to integrate Meta Pixels in FlexyPe Dashboard
 
 Setting up your Meta integration with FlexyPe is straightforward. Just follow these steps to seamlessly track conversions and optimize your campaigns.
 
+## Getting the API keys and Pixel ID on Meta Pixel
+
 <Steps>
-  <Step title="Access Your Meta Business Suite">
+  <Step title="Accessing your Meta Business Suite.">
     <img
       className="rounded-lg"
-      src="/images/dashboard.png"
+      src="/images/integrations/analytics/meta-1.png"
       alt="Hero Dark"
     />
-    - Log in to your Meta Business Suite.
-    - Click on the **All Tools** menu and select **Events Manager**.
-    - Navigate to **Data Sources**.
+    - Log in to your [Meta Business Suite](https://business.facebook.com).
+    - Click on the All Tools menu and select Events Manager.
+    - Navigate to Data Sources.
   </Step>
 
   <Step title="Select Your Shopify Pixel">
     <img
       className="rounded-lg"
-      src="/images/dashboard.png"
+      src="/images/integrations/analytics/meta-2.png"
       alt="Hero Dark"
     />
-    - Choose the Shopify pixel for which you want to track conversions.
-    - Copy the **Pixel ID**.
+    - From the list of available pixels, locate the one linked to your Shopify store.
+    - Select the pixel to connect it with your conversion tracking.
   </Step>
-  <Step title="Integrate with FlexyPe">
+  <Step title="Get the Pixel ID">
+      <img
+        className="rounded-lg"
+        src="/images/integrations/analytics/meta-3.png"
+        alt="Hero Dark"
+      />
+      - Navigate to the Settings tab for the selected Shopify pixel.
+      - Copy the **Dataset ID** and keep it handy for configuration.
+  </Step>
+  <Step title="Generate and Get your Conversion API">
+     <img
+        className="rounded-lg"
+        src="/images/integrations/analytics/meta-4.png"
+        alt="Hero Dark"
+     />
+    - On the same Settings tab scroll down to Conversions API.
+    - Select **Conversion API Gateway**.
+    - Click on Generate Access Token if it hasn't been generated yet.
+    - Copy the generated token and save it securely, as you’ll need it for configuration.
+    <Warning>Do not share this token — it provides access to your conversion data</Warning>
+  </Step>
+</Steps>
+
+## Integrate Meta Pixel with FlexyPe
+
+<Steps>
+  <Step title="Access Meta Pixels Integration on your FlexyPe Dashboard.">
     <img
       className="rounded-lg"
-      src="/images/dashboard.png"
+      src="/images/integrations/analytics/meta-5.png"
       alt="Hero Dark"
     />
-    - Go to [Meta Pixels](https://dashboard.flexype.io/settings/integrations/meta) in the FlexyPe dashboard.
-    - Click on the **Add pixel** button.
-    - Paste the **Pixel ID** into the designated field.
+    - Log in to your [FlexyPe Dashboard](https://dashboard.flexype.io).
+    - Click on the Settings menu and select Integrations.
+    - Navigate to Meta Pixels.
   </Step>
-  <Step title="Generate and Add Your API Token">
+  <Step title="Configure a new Pixel">
     <img
       className="rounded-lg"
-      src="/images/dashboard.png"
+      src="/images/integrations/analytics/meta-6.png"
       alt="Hero Dark"
     />
-    - Return to your Meta Business Suite and open the pixel you're using.
-    - Go to the Settings tab for that pixel.
-    - Scroll down to **Conversions API** and click on **Generate Access Token**.
-    - Copy the generated **API token**.
+    - Click on the Add pixel button.
+    - Paste the copied **Dataset ID** into the pixel id field.
+    - Paste the copied **DConversion API** into the designated field and turn on the API Status.
+    - Click Save to finalize the Pixel.
   </Step>
-  <Step title="Finalize the Integration in FlexyPe">
-    - Head back to your FlexyPe Dashboard.
-    - Paste the **API token** you copied and turn on the API Status.
-    - Click **Save** to finalize the Meta Pixel.
+  <Step title="Finish Setup and Start Tracking">
+   <img
+     className="rounded-lg"
+     src="/images/integrations/analytics/meta-7.png"
+     alt="Glexype Setup Complete"
+   />
+   - Once you've added the Pixel, your setup is complete.
+   - FlexyPe is now connected to your Shopify store and ready to track conversions.
   </Step>
+
 </Steps>
 
 By following these steps, you’ll successfully integrate Meta with FlexyPe, enabling seamless conversion tracking and enhanced campaign optimization.
