@@ -14,17 +14,17 @@ Integrating Google Analytics with FlexyPe is quick and easy. Follow a few simple
       alt="Hero Dark"
     />
     - Log in to [Google Analytics](https://analytics.google.com/analytics/web).
-    - Click on Goals on the left panel and select Events Manager.
-    - Navigate to Summary under Conversion.
+    - Click on Admin on the bottom left panel.
+    - In Property settings, go to Data Streams under the Data Collection and Modification section.
   </Step>
-  <Step title="Select Your conversion event">
+  <Step title="Select your data stream">
     <img
       className="rounded-lg"
       src="/images/integrations/analytics/ga4-2.png"
       alt="Hero Dark"
     />
-    - Select your Purchase conversion event.
-    - On the Details tab scroll down to Tag Setup.
+     - Select your existing Web data stream.
+     - If you don’t have one, click **Add Stream** and choose **Web** to create a new data stream for your site.
   </Step>
   <Step title="Get the Measurement ID">
     <img
@@ -32,21 +32,21 @@ Integrating Google Analytics with FlexyPe is quick and easy. Follow a few simple
       src="/images/integrations/analytics/ga4-3.png"
       alt="Hero Dark"
     />
-    - Expand the Tag Setup dropdown and select Use Google Tag Manager
-    - Copy the **Conversion ID** and **Conversion Label** and keep it handy for configuration.
+    - Select your **Web** data stream from the list.
+    - Copy the **Measurement ID** from Stream details and keep it handy for configuration.
   </Step>
-  <Step title="Get its Secret Value">
+  <Step title="Get its API Secret">
     <img
       className="rounded-lg"
       src="/images/integrations/analytics/ga4-4.png"
       alt="Hero Dark"
     />
-    - Expand the Tag Setup dropdown and select Use Google Tag Manager
-    - Copy the **Conversion ID** and **Conversion Label** and keep it handy for configuration.
+    - On the same data stream scroll down to Measurement Protocol API secrets and click on it.
+    - Copy the **Secret Value** and keep it handy for configuration.
   </Step>
 </Steps>
 
-## Integrate Google Ads with FlexyPe
+## Integrate Google Analytics with FlexyPe
 
 <Steps>
   <Step title="Access Google Analytics Integration on your FlexyPe Dashboard.">
