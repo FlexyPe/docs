@@ -2,31 +2,83 @@
 title: 'Google Analytics'
 ---
 
-> Steps to integrate Google Analytics in FlexyPe Dashboard
+Integrating Google Analytics with FlexyPe is quick and easy. Follow a few simple steps to track user behavior and conversion events across your website. With this integration, you gain valuable insights into how customers interact with your checkout, enabling you to optimize your user experience and make informed, data-driven marketing decisions.
 
-FlexyPe makes it incredibly easy to track checkout events on Google Analytics 4 (GA4) through a seamless backend API integration. Once you've configured the settings on your FlexyPe Dashboard, these events will automatically start appearing in your GA4 funnel under **Reports** → **Engagement** → **Events**.
+## Getting the Measurement ID and API Secret from Google Analytics
 
 <Steps>
-  <Step title="Access Conversions in Google Analytics">
+  <Step title="Accessing the Google Analytics dashboard.">
     <img
       className="rounded-lg"
-      src="/images/dashboard.png"
+      src="/images/integrations/analytics/ga4-1.png"
       alt="Hero Dark"
     />
-    - Log in to your Google Analytics account.
-    - Simply type **Measurement ID** into the search bar and copy the Measurement ID that appears.
+    - Log in to [Google Analytics](https://analytics.google.com/analytics/web).
+    - Click on Goals on the left panel and select Events Manager.
+    - Navigate to Summary under Conversion.
   </Step>
-  <Step title="Integrate with FlexyPe">
+  <Step title="Select Your conversion event">
     <img
       className="rounded-lg"
-      src="/images/dashboard.png"
+      src="/images/integrations/analytics/ga4-2.png"
       alt="Hero Dark"
     />
-    - Go to [Google Analytics](https://dashboard.flexype.io/settings/integrations/google-analytics) in the FlexyPe dashboard.
-    - Click on the **Add analytics credential** button.
-    - Paste the **Measurement ID** & **API Secret** into the designated field.
-    - Click **Save** to finalize the Conversion Action.
+    - Select your Purchase conversion event.
+    - On the Details tab scroll down to Tag Setup.
+  </Step>
+  <Step title="Get the Measurement ID">
+    <img
+      className="rounded-lg"
+      src="/images/integrations/analytics/ga4-3.png"
+      alt="Hero Dark"
+    />
+    - Expand the Tag Setup dropdown and select Use Google Tag Manager
+    - Copy the **Conversion ID** and **Conversion Label** and keep it handy for configuration.
+  </Step>
+  <Step title="Get its Secret Value">
+    <img
+      className="rounded-lg"
+      src="/images/integrations/analytics/ga4-4.png"
+      alt="Hero Dark"
+    />
+    - Expand the Tag Setup dropdown and select Use Google Tag Manager
+    - Copy the **Conversion ID** and **Conversion Label** and keep it handy for configuration.
   </Step>
 </Steps>
 
-By following these straight forward steps, you’ll have a robust setup for tracking checkout events in GA4, giving you valuable insights into your customers' journeys on the FlexyPe platform.
+## Integrate Google Ads with FlexyPe
+
+<Steps>
+  <Step title="Access Google Analytics Integration on your FlexyPe Dashboard.">
+    <img
+      className="rounded-lg"
+      src="/images/integrations/analytics/ga4-5.png"
+      alt="Hero Dark"
+    />
+    - Log in to your [FlexyPe Dashboard](https://dashboard.flexype.io).
+    - Click on the Settings menu and select Integrations.
+    - Navigate to Google Analytics.
+  </Step>
+  <Step title="Configure a new conversion action">
+    <img
+      className="rounded-lg"
+      src="/images/integrations/analytics/ga4-6.png"
+      alt="Hero Dark"
+    />
+    - Click on the Add new conversion action.
+    - Paste the copied **Measurement ID** into the designated field.
+    - Paste the copied **Secret Value** into the API Secret field.
+    - Click Save to finalize the conversion action.
+  </Step>
+  <Step title="Finish Setup and Start Tracking">
+   <img
+     className="rounded-lg"
+     src="/images/integrations/analytics/ga4-7.png"
+     alt="Hero Dark"
+   />
+   - Once you've added the conversion action, your setup is complete.
+   - FlexyPe is now connected to your Shopify store and ready to track conversions from Google Analytics.
+  </Step>
+</Steps>
+
+By following these steps, you’ll successfully integrate Google Analytics with FlexyPe, enabling comprehensive tracking of user behavior and conversions for deeper insights and smarter optimization.
