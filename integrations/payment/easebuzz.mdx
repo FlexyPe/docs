@@ -2,6 +2,87 @@
 title: 'Easebuzz'
 ---
 
-> Webhook Setup for Easebuzz (Coming Soon)
+Integrating Easebuzz with FlexyPe enables fast, secure, and reliable payment processing directly through your checkout. With just a few steps, you can start accepting payments and ensure a smooth transaction experience for your customers.
 
-We're currently working on integrating Easebuzz. Webhook setup instructions for payments will be available here shortly. Stay tuned!
+## Getting the Key and Salt
+
+<Steps>
+    <Step title="Receive Credentials from Easebuzz">
+        - The **Key** and **Salt** will be shared with you via email by the Easebuzz team.
+        - Check your inbox for an email containing these credentials and keep them handy for configuration.
+    </Step>
+</Steps>
+
+## Integrate Easebuzz with FlexyPe
+
+<Steps>
+    <Step title="Access Easebuzz in FlexyPe Dashboard">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/easebuzz/ezb-1.png"
+            alt="Hero Dark"
+        />
+        - Log in to [Easebuzz Dashboard](https://auth.easebuzz.in/easebuzz/login).
+        - Click on Developer on the top right corner.
+    </Step>
+    <Step title="Configure Easebuzz">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/easebuzz/ezb-2.png"
+            alt="Hero Dark"
+        />
+        - Click the Configure button located within the Easebuzz card to proceed with setup.
+        - Paste the copied **Key** into the designated field.
+        - Paste the copied **Salt** into the designated field.
+        - Click Save to complete the configuration.
+        <Warning>Do not delete the credentials if the payment provider is in use</Warning>
+    </Step>
+    <Step title="Use Easebuzz for Your Payment Methods">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/easebuzz/ezb-3.png"
+            alt="Hero Dark"
+        />
+        - In the section below, you'll see a list of payment methods.
+        - If you want to use Easebuzz to handle any of these methods, change the provider to **Easebuzz**.
+        - Repeat this for each method you wish to route through Easebuzz.
+        <Warning>Make sure Easebuzz is fully configured before selecting it as a provider.</Warning>
+    </Step>
+</Steps>
+
+## SetUp Easebuzz Webhooks
+
+<Steps>
+    <Step title="Access Easebuzz Dashboard">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/easebuzz/ezb-4.png"
+            alt="Hero Dark"
+        />
+        - Return to your Easebuzz Dashboard, where you are already logged in.
+        - Click on Payment Gateway on the left sidebar.
+        - Select on Account Settings under Payment Gateway and then switch to Webhooks.
+    </Step>
+
+    <Step title="Add Webhook for Payments">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/easebuzz/ezb-5.png"
+            alt="Hero Dark"
+        />
+        ```
+        https://api.flexype.in/v1/public/pg/easebuzz/webhook
+        ```
+        - Add the above URL and enable the settings for
+            - Transaction Webhook
+            - Refund Webhook
+            - Settlement Webhook
+            - Auto Debit Webhook
+    </Step>
+    <Step title="Complete Payment Setup">
+        - After adding your payment credentials in FlexyPe and configuring the webhook, the setup is complete.
+        - FlexyPe is now connected to your Shopify store and ready to process payments.
+    </Step>
+</Steps>
+
+By following these steps, you’ll successfully integrate Easebuzz with FlexyPe, enabling secure payment processing and a smooth checkout experience.

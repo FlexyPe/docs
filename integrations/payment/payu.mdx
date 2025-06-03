@@ -2,6 +2,128 @@
 title: 'PayU'
 ---
 
-> Webhook Setup for PayU (Coming Soon)
+Integrating PayU with FlexyPe enables fast, secure, and reliable payment processing directly through your checkout. With just a few steps, you can start accepting payments and ensure a smooth transaction experience for your customers.
 
-We're currently working on integrating PayU. Webhook setup instructions for payments will be available here shortly. Stay tuned!
+## Getting the API Key and Salt
+
+<Steps>
+    <Step title="Access PayU Dashboard">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/payu/payu-1.png"
+            alt="Hero Dark"
+        />
+        - Log in to [PayU Dashboard](https://onboarding.payu.in/app/account/signin).
+        - Click on Developer on the left panel and select API Keys.
+    </Step>
+
+    <Step title="Get the API Key and Salt">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/payu/payu-2.png"
+            alt="Hero Dark"
+        />
+        - Under API Key Salt details, you will find the required keys.
+        - Copy the **API Key** and **API Salt** and keep it handy for configuration.
+    </Step>
+</Steps>
+
+## Integrate PayU with FlexyPe
+
+<Steps>
+    <Step title="Access PayU in FlexyPe Dashboard.">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/payu/payu-3.png"
+            alt="Hero Dark"
+        />
+        - Log in to your [FlexyPe Dashboard](https://dashboard.flexype.io).
+        - Click on the Settings menu and select Payments.
+    </Step>
+    <Step title="Configure PayU">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/payu/payu-4.png"
+            alt="Hero Dark"
+        />
+        - Click the Configure button located within the PayU card to proceed with setup.
+        - Paste the copied **API Key** into the designated field.
+        - Paste the copied **API Salt** into the designated field.
+        - Click Save to complete the configuration.
+        <Warning>Do not delete the credentials if the payment provider is in use</Warning>
+    </Step>
+    <Step title="Use PayU for Your Payment Methods">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/payu/payu-5.png"
+            alt="Hero Dark"
+        />
+        - In the section below, you'll see a list of payment methods.
+        - If you want to use PayU to handle any of these methods, change the provider to **PayU**.
+        - Repeat this for each method you wish to route through PayU.
+        <Warning>Make sure PayU is fully configured before selecting it as a provider.</Warning>
+    </Step>
+</Steps>
+
+## SetUp PayU Webhooks
+
+<Steps>
+    <Step title="Access PayU Dashboard">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/payu/payu-6.png"
+            alt="Hero Dark"
+        />
+        - Return to your PayU Dashboard, where you are already logged in.
+        - Click on Developer on the left panel and Webhooks.
+    </Step>
+
+    <Step title="Create a Webhook for Successful Payments">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/payu/payu-7.png"
+            alt="Hero Dark"
+        />
+        - Click on the **Create Webhook** button.
+        - In the event type, select **Payments – Successful**.
+        - In the webhook URL field, paste the following URL:
+        ```
+        https://api.flexype.in/v1/public/pg/payu/webhook
+        ```
+        - Click **Save** to finalize the webhook.
+    </Step>
+    <Step title="Create a Webhook for Failed Payments">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/payu/payu-8.png"
+            alt="Hero Dark"
+        />
+        - Click on the **Create Webhook** button.
+        - In the event type, select **Payments – Failed**.
+        - In the webhook URL field, paste the following URL:
+        ```
+        https://api.flexype.in/v1/public/pg/payu/webhook
+        ```
+        - Click **Save** to finalize the webhook.
+    </Step>
+    <Step title="Create a Webhook for Refunds">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/payu/payu-9.png"
+            alt="Hero Dark"
+        />
+        - Click on the **Create Webhook** button.
+        - In the event type, select **Refunds**.
+        - In the webhook URL field, paste the following URL:
+        ```
+        https://api.flexype.in/v1/public/pg/payu/webhook
+        ```
+        - Click **Save** to finalize the webhook.
+    </Step>
+    <Step title="Complete Payment Setup">
+        - After adding your payment credentials in FlexyPe and configuring the webhook, the setup is complete.
+        - FlexyPe is now connected to your Shopify store and ready to process payments.
+    </Step>
+</Steps>
+
+By following these steps, you’ll successfully integrate PayU with FlexyPe, enabling secure payment processing and a smooth checkout experience.

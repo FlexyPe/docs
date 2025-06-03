@@ -2,6 +2,114 @@
 title: 'Cashfree'
 ---
 
-> Webhook Setup for Cashfree (Coming Soon)
+Integrating Cashfree with FlexyPe enables fast, secure, and reliable payment processing directly through your checkout. With just a few steps, you can start accepting payments and ensure a smooth transaction experience for your customers.
 
-We're currently working on integrating Cashfree. Webhook setup instructions for payments will be available here shortly. Stay tuned!
+## Getting the App ID and Secret Key
+
+<Steps>
+    <Step title="Access Cashfree Dashboard">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/cashfree/chf-1.png"
+            alt="Hero Dark"
+        />
+        - Log in to [Cashfree Dashboard](https://merchant.cashfree.com/auth/login).
+        - Access the Payment Gateway section.
+    </Step>
+
+    <Step title="Get the App ID and Secret Key">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/cashfree/chf-2.png"
+            alt="Hero Dark"
+        />
+        - Go to the Developers section in the left panel, then select API Keys.
+        - Copy the **App ID** and **Secret Key** and keep it handy for configuration.
+    </Step>
+</Steps>
+
+## Integrate Cashfree with FlexyPe
+
+<Steps>
+    <Step title="Access Cashfree in FlexyPe Dashboard.">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/cashfree/chf-3.png"
+            alt="Hero Dark"
+        />
+        - Log in to your [FlexyPe Dashboard](https://dashboard.flexype.io).
+        - Click on the Settings menu and select Payments.
+    </Step>
+    <Step title="Configure Cashfree">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/cashfree/chf-4.png"
+            alt="Hero Dark"
+        />
+        - Click the Configure button located within the Cashfree card to proceed with setup.
+        - Paste the copied **App ID** into the designated field.
+        - Paste the copied **Secret Key** into the designated field.
+        - Click Save to complete the configuration.
+        <Warning>Do not delete the credentials if the payment provider is in use</Warning>
+    </Step>
+    <Step title="Use Cashfree for Your Payment Methods">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/cashfree/chf-5.png"
+            alt="Hero Dark"
+        />
+        - In the section below, you'll see a list of payment methods.
+        - If you want to use Cashfree to handle any of these methods, change the provider to **Cashfree**.
+        - Repeat this for each method you wish to route through Cashfree.
+        <Warning>Make sure Cashfree is fully configured before selecting it as a provider.</Warning>
+    </Step>
+</Steps>
+
+## SetUp Cashfree Webhooks
+
+<Steps>
+    <Step title="Access Cashfree Dashboard">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/cashfree/chf-6.png"
+            alt="Hero Dark"
+        />
+        - Return to Payment Gateway section in your Cashfree Dashboard.
+        - Go to the Developers section in the left panel, then select Webhooks.
+    </Step>
+
+    <Step title="Create a Webhook for Payments">
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/cashfree/chf-7.png"
+            alt="Hero Dark"
+        />
+        - Click on the **Add webhook endpoint** button.
+        - In the endpoint URL field, paste the following URL:
+        ```
+        https://api.flexype.in/v1/public/pg/cashfree/webhook
+        ```
+        <img
+            className="rounded-lg"
+            src="/images/integrations/payment/cashfree/chf-8.png"
+            alt="Hero Dark"
+        />
+        - In the Webhook Version, select year **2022**.
+        - Click on continue.
+        - Under Policy select the below events:
+            - Refund
+            - Auto Refund
+            - Settlement success
+            - Settlement failed
+            - Failed Payment
+            - Success Payment
+        - Click continue and then click **Save** to finalize the webhook.
+
+    </Step>
+    <Step title="Complete Payment Setup">
+        - After adding your payment credentials in FlexyPe and configuring the webhook, the setup is complete.
+        - FlexyPe is now connected to your Shopify store and ready to process payments.
+    </Step>
+</Steps>
+
+By following these steps, you’ll successfully integrate Cashfree with FlexyPe, enabling secure payment processing and a smooth checkout experience.
