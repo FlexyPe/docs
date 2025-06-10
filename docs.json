@@ -31,13 +31,13 @@
           {
             "group": "Payment Providers",
             "pages": [
-              "integrations/payment/xpay",
+              "integrations/payment/razorpay",
+              "integrations/payment/easebuzz",
+              "integrations/payment/cashfree",
               "integrations/payment/payu",
+              "integrations/payment/xpay",
               "integrations/payment/phonepe",
               "integrations/payment/snapmint",
-              "integrations/payment/razorpay",
-              "integrations/payment/cashfree",
-              "integrations/payment/easebuzz",
               "integrations/payment/cc-avenue"
             ]
           },
