@@ -1,0 +1,341 @@
+---
+title: Abandoned Cart Recovery
+---
+
+The Abandoned Cart Recovery Webhook is triggered whenever a cart session is created or updated. It facilitates real-time synchronization of cart data with external systems, enabling accurate tracking of active shopping sessions. This webhook plays a vital role in identifying potential cart abandonment scenarios and allows businesses to automate recovery actions such as follow-up emails, whatsapp messages, personalized notifications, or remarketing efforts. By leveraging this integration, brands can engage customers at the right moment and significantly improve cart conversion rates.
+
+### Headers
+
+<ParamField body="X-Flexype-Authorization" type="string">
+    A secret key used to verify that the webhook request originated from FlexyPe. Ensure this token is validated to prevent unauthorized access.
+</ParamField>
+
+### Body
+
+<ResponseField name="cart_items" type="array">
+    List of products currently added to the user's cart at the time of checkout.
+    <Expandable title="Item Properties">
+        <ResponseField name="image" type="string">
+            URL of the product image displayed to the user during checkout.
+        </ResponseField>
+
+        <ResponseField name="title" type="string">
+            Title describing the selected product variant.
+        </ResponseField>
+
+        <ResponseField name="discount" type="number" default="0">
+            The discount amount applied to the item, in the store’s currency.
+        </ResponseField>
+
+        <ResponseField name="price" type="number">
+            The price per unit of the item after applying any discounts.
+        </ResponseField>
+
+        <ResponseField name="quantity" type="number">
+            The number of units of the product added to the cart.
+        </ResponseField>
+
+        <ResponseField name="variant" type="object">
+            Detailed information about the specific product variant selected.
+            <Expandable title="Variant Properties">
+                <ResponseField name="title" type="string">
+                    Descriptive label of the selected variant.
+                </ResponseField>
+
+                <ResponseField name="price" type="number">
+                    Price of the specific variant of the product.
+                </ResponseField>
+
+                <ResponseField name="variant_id" type="number">
+                    Unique identifier assigned to this variant in Shopify.
+                </ResponseField>
+
+                <ResponseField name="compare_at_price" type="number">
+                    The original price before discounts — shown as strikethrough on the UI.
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+
+        <ResponseField name="product_id" type="number">
+            Unique identifier for the base product in Shopify.
+        </ResponseField>
+
+        <ResponseField name="variant_id" type="number">
+            ID of the variant selected, same as variant.variant_id (duplicated for convenience).
+        </ResponseField>
+
+        <ResponseField name="grams" type="number" default="0">
+            Weight of the product variant in grams. Useful for shipping calculations.
+        </ResponseField>
+
+        <ResponseField name="handle" type="string">
+            The URL-friendly handle of the product, used in Shopify product URLs.
+        </ResponseField>
+
+        <ResponseField name="total_price" type="number">
+            Total payable price for this item, calculated as `price × quantity`.
+        </ResponseField>
+
+        <ResponseField name="sub_total_price" type="number">
+            Total price for the item before any discounts are applied.
+        </ResponseField>
+
+        <ResponseField name="total_discount" type="number">
+            Cumulative discount applied to the item (if any).
+        </ResponseField>
+
+        <ResponseField name="single_variant" type="boolean" default="false">
+            Indicates whether the product has only one variant available (true/false).
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<ParamField body="checkout_url" type="string">
+    URL to redirect the user to FlexyPe Checkout.
+</ParamField>
+
+<ParamField body="discount" type="number" default="0">
+    The total discount applied to the entire cart, in the store’s currency.
+</ParamField>
+
+<ParamField body="total_payable" type="number">
+    The final amount the user has to pay after discounts and calculations.
+</ParamField>
+
+<ParamField body="session_state" type="string">
+    The current status of the checkout session. This field reflects which step the user is on during their cart journey.
+
+    **Possible values:**
+    - `INITIATED`: Cart session has been created but no user input has been provided.
+    - `PHONE_ENTERED`: User has entered a phone number.
+    - `OTP_VERIFIED`: User has successfully verified the OTP.
+    - `ADDRESS_LOADED`: Address screen has been rendered or prefilled.
+    - `ADDRESS_SHIPPING_SELECTED`: Shipping method has been selected after address submission.
+    - `PAYMENT_LOADED`: Payment screen has been rendered.
+    - `PAYMENT_INITIATED`: Payment has been initiated by the user.
+    - `COMPLETED`: Order has been successfully completed.
+</ParamField>
+
+<ResponseField name="user" type="User Object">
+    <Expandable title="properties">
+        <ResponseField name="phone_no" type="string">
+            The customer's phone number used during checkout.
+        </ResponseField>
+
+        <ResponseField name="dial_code" type="string">
+            The country code associated with the user's phone number.
+        </ResponseField>
+
+        <ResponseField name="name" type="string">
+            The customer's name used during checkout.
+        </ResponseField>
+
+        <ResponseField name="email" type="string">
+            The customer's email used during checkout.
+        </ResponseField>
+
+        <ResponseField name="address" type="object">
+            An object representing the user's address based on `session_state`
+            <Expandable title="Address Properties">
+                <ResponseField name="address1" type="string">
+                    Primary address line, typically containing street name, building number, or apartment name.
+                </ResponseField>
+
+                <ResponseField name="address2" type="string">
+                    (Optional) Secondary address line, such as apartment number, suite, or additional details.
+                </ResponseField>
+
+                <ResponseField name="city" type="string">
+                    The city or locality of the user's shipping or billing address.
+                </ResponseField>
+
+                <ResponseField name="state" type="string">
+                    Full name of the state or province associated with the address.
+                </ResponseField>
+
+                <ResponseField name="country" type="string">
+                    Full name of the country (e.g: \"India\").
+                </ResponseField>
+
+                <ResponseField name="state_code" type="string">
+                    ISO 3166-2 code for the state (e.g: \"GJ\" for Gujarat).
+                </ResponseField>
+
+                <ResponseField name="country_code" type="string">
+                    ISO 3166-1 alpha-2 code for the country (e.g: \"IN\" for India).
+                </ResponseField>
+
+                <ResponseField name="postal_code" type="string">
+                    Postal or ZIP code corresponding to the address.
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<ParamField body="store_link" type="string">
+    The Shopify domain/subdomain for the merchant store.
+</ParamField>
+
+<ResponseField name="client_meta" type="ClientMeta Object">
+    Metadata about the client's device and request.
+    <Expandable title="properties">
+        <ResponseField name="client_ip" type="string">
+            IP address of the client at the time of checkout initiation.
+        </ResponseField>
+
+        <ResponseField name="http_referer" type="string">
+            Referring URL from which the user was directed to the store.
+        </ResponseField>
+
+        <ResponseField name="user_agent" type="string">
+            User agent string from the user's browser or device.
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<ResponseField name="analytics" type="Analytics Object">
+    Data related to marketing and tracking attribution.
+    <Expandable title="properties">
+        <ResponseField name="fb.fbc" type="string">
+            Facebook Click ID (FBC) used for ad tracking. May be empty if unavailable.
+        </ResponseField>
+
+        <ResponseField name="fb.fbp" type="string">
+            Facebook browser ID (FBP) for retargeting and attribution.
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<ResponseField name="metadata" type="Metadata Object">
+    Metadata captured from the user's landing page and original source. This is typically used for attribution, analytics, and campaign performance tracking.
+
+    <Expandable title="properties">
+        <ResponseField name="utm" type="array">
+            An array of key–value pairs representing UTM and tracking parameters passed in the landing page URL.
+
+            **Allowed keys:**
+            - `fbclid`: Facebook Click ID
+            - `gclid`: Google Ads Click Identifier
+            - `utm_medium`: Type of marketing channel
+            - `utm_source`: Origin platform
+            - `utm_campaign`: Campaign name or identifier
+            - `utm_content`: Specific content or creative used
+            - `utm_term`: Paid search keyword or targeting term
+
+            <Expandable title="UTM Parameter Properties">
+                <ResponseField name="name" type="string">
+                    One of the allowed analytics parameter keys listed above.
+                </ResponseField>
+
+                <ResponseField name="value" type="string">
+                    The value associated with the given analytics parameter.
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+
+        <ResponseField name="orig_referer" type="string">
+            The original referrer URL from which the user landed on the store.
+        </ResponseField>
+
+        <ResponseField name="referer_host" type="string">
+            The host domain extracted from the original referrer URL.
+        </ResponseField>
+
+        <ResponseField name="landing_page" type="string">
+            The specific page path on the store where the user first landed.
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+
+<RequestExample>
+```json Response
+{
+  "cart_items": [
+    {
+      "image": "https://cdn.shopify.com/s/files/1/0598/4564/0276/files/wallnut_brownie_1st_slide.jpg?v=1745323290",
+      "title": "400gms / Gluten-Free",
+      "discount": 0,
+      "price": 630,
+      "quantity": 1,
+      "variant": {
+        "title": "400gms / Gluten-Free",
+        "price": 630,
+        "variant_id": 41564857663572,
+        "compare_at_price": 700
+      },
+      "product_id": 7516974022740,
+      "variant_id": 41564857663572,
+      "grams": 0,
+      "handle": "gluten-free-double-chocochunk-walnut",
+      "total_price": 630,
+      "sub_total_price": 630,
+      "total_discount": 0,
+      "single_variant": false
+    }
+  ],
+  "checkout_url": "https://flexype.myshopify.com/?flx_s=331d47df-8461-495b-9c4f-27ed915d9c8e",
+  "discount": 0,
+  "total_payable": 630,
+  "session_state": "ADDRESS_LOADED",
+  "user": {
+    "phone_no": "7777788888",
+    "dial_code": "91",
+    "address": {
+      "address1": "A-11, Shakti Bhawan, Sailesh Vihar",
+      "address2": "",
+      "city": "Vadodara",
+      "state": "Gujarat",
+      "country": "India",
+      "state_code": "GJ",
+      "country_code": "IN",
+      "postal_code": "391101"
+    }
+  },
+  "store_link": "flexype.myshopify.com",
+  "client_meta": {
+    "client_ip": "1.1.1.1",
+    "http_referer": "https://flexype.io",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+  },
+  "analytics": {
+    "fb": {
+      "fbc": "fb.1.1718171818181.1234567890",
+      "fbp": "fb.1.1749629739196.52545909099157380"
+    }
+  },
+  "metadata": {
+    "utm": [
+      {
+        "name": "utm_source",
+        "value": "Facebook_Mobile_Reels"
+      },
+      {
+        "name": "utm_medium",
+        "value": "Paid_Social"
+      },
+      {
+        "name": "utm_campaign",
+        "value": "SM_ToF_LuxuryTravel_MR28"
+      },
+      {
+        "name": "utm_content",
+        "value": "Video_THR&Q8"
+      },
+      {
+        "name": "fbclid",
+        "value": "IwZXh0bgNhZW0BMABhZGlkAasXP1Yg-jsBHsxu8sksf9L0IDtCbKwAtTELSmrMY-_SHwn507QuXkncpBXofqJes75cFFxX_aem_0HVwkeACTbIb2G8E87P0Xw"
+      },
+      {
+        "name": "utm_term",
+        "value": "120215375448050395"
+      }
+    ],
+    "orig_referer": "https://www.google.com",
+    "referer_host": "www.google.com",
+    "landing_page": "/"
+  }
+}
+```
+</RequestExample>
