@@ -20,41 +20,55 @@
     "decoration": "grid"
   },
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Get Started",
-        "pages": ["introduction", "onboarding"]
-      },
-      {
-        "group": "Integrations",
-        "pages": [
+        "tab": "Documentation",
+        "groups": [
           {
-            "group": "Payment Providers",
+            "group": "Get Started",
+            "pages": ["introduction", "onboarding"]
+          },
+          {
+            "group": "Integrations",
             "pages": [
-              "integrations/payment/razorpay",
-              "integrations/payment/easebuzz",
-              "integrations/payment/cashfree",
-              "integrations/payment/payu",
-              "integrations/payment/xpay",
-              "integrations/payment/phonepe",
-              "integrations/payment/snapmint",
-              "integrations/payment/cc-avenue"
+              {
+                "group": "Payment Providers",
+                "pages": [
+                  "integrations/payment/razorpay",
+                  "integrations/payment/easebuzz",
+                  "integrations/payment/cashfree",
+                  "integrations/payment/payu",
+                  "integrations/payment/xpay",
+                  "integrations/payment/phonepe",
+                  "integrations/payment/snapmint",
+                  "integrations/payment/cc-avenue"
+                ]
+              },
+              {
+                "group": "Analytics",
+                "pages": [
+                  "/integrations/analytics/meta",
+                  "/integrations/analytics/google-ads",
+                  "/integrations/analytics/google-analytics"
+                ]
+              }
             ]
           },
           {
-            "group": "Analytics",
+            "group": "Webhooks",
             "pages": [
-              "/integrations/analytics/meta",
-              "/integrations/analytics/google-ads",
-              "/integrations/analytics/google-analytics"
+              "/webhooks/acr"
             ]
           }
         ]
       },
       {
-        "group": "Webhooks",
-        "pages": [
-          "/webhooks/acr"
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Release Notes",
+            "pages": ["changelog"]
+          }
         ]
       }
     ],
