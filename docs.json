@@ -26,7 +26,10 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": ["introduction", "onboarding"]
+            "pages": [
+              "introduction",
+              "onboarding"
+            ]
           },
           {
             "group": "Integrations",
@@ -47,9 +50,9 @@
               {
                 "group": "Analytics",
                 "pages": [
-                  "/integrations/analytics/meta",
-                  "/integrations/analytics/google-ads",
-                  "/integrations/analytics/google-analytics"
+                  "integrations/analytics/meta",
+                  "integrations/analytics/google-ads",
+                  "integrations/analytics/google-analytics"
                 ]
               }
             ]
@@ -57,17 +60,74 @@
           {
             "group": "Webhooks",
             "pages": [
-              "/webhooks/acr"
+              "webhooks/acr"
             ]
           }
         ]
       },
+
+      {
+        "tab": "Dashboard Handbook",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "intro",
+              "dashboard",
+              "abandonedcart",
+              "shipping",
+              {
+                "group": "Coupons",
+                "pages": [
+                  "coupons/overview",
+                  "coupons/AmountOffProducts_OrderDiscount",
+                  "coupons/buyxgety",
+                  "coupons/PurchaseDriven",
+                  "coupons/ExclusiveFreeGift",
+                  "coupons/FreeShipping",
+                  "coupons/Bundle"
+                ]
+              },
+              "paymentoffers",
+              "upsell",
+              {
+                "group": "Customization",
+                "pages": [
+                  "customizations/overview",
+                  "customizations/general",
+                  "customizations/login",
+                  "customizations/address",
+                  "customizations/payments"
+                ]
+              },
+              "rtosuite",
+              {
+                "group": "Settings",
+                "pages": [
+                  "settings/overview",
+                  "settings/storedetails",
+                  "settings/payments",
+                  "settings/taxesandduties",
+                  "settings/integrations",
+                  "settings/apikeys",
+                  "settings/usersandpermissions",
+                  "settings/activitylogs",
+                  "settings/changepassword"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+
       {
         "tab": "Changelog",
         "groups": [
           {
             "group": "Release Notes",
-            "pages": ["changelog"]
+            "pages": [
+              "changelog"
+            ]
           }
         ]
       }
@@ -83,6 +143,16 @@
           "anchor": "Blog",
           "href": "https://flexype.io/blogs",
           "icon": "newspaper"
+        },
+        {
+          "anchor": "Docs",
+          "href": "https://docs.flexype.io/",
+          "icon": "book"
+        },
+        {
+          "anchor": "Dashboard",
+          "href": "https://docs.flexype.io/",
+          "icon": "bookmark"
         }
       ]
     }
