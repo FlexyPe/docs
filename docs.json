@@ -26,10 +26,7 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": [
-              "introduction",
-              "onboarding"
-            ]
+            "pages": ["introduction", "onboarding"]
           },
           {
             "group": "Integrations",
@@ -49,19 +46,13 @@
               },
               {
                 "group": "Analytics",
-                "pages": [
-                  "integrations/analytics/meta",
-                  "integrations/analytics/google-ads",
-                  "integrations/analytics/google-analytics"
-                ]
+                "pages": ["integrations/analytics/meta", "integrations/analytics/google-ads", "integrations/analytics/google-analytics"]
               }
             ]
           },
           {
             "group": "Webhooks",
-            "pages": [
-              "webhooks/acr"
-            ]
+            "pages": ["webhooks/acr"]
           }
         ]
       },
@@ -92,13 +83,7 @@
               "upsell",
               {
                 "group": "Customization",
-                "pages": [
-                  "customizations/overview",
-                  "customizations/general",
-                  "customizations/login",
-                  "customizations/address",
-                  "customizations/payments"
-                ]
+                "pages": ["customizations/overview", "customizations/general", "customizations/login", "customizations/address", "customizations/payments"]
               },
               "rtosuite",
               {
@@ -125,9 +110,7 @@
         "groups": [
           {
             "group": "Release Notes",
-            "pages": [
-              "changelog"
-            ]
+            "pages": ["changelog"]
           }
         ]
       }
@@ -143,11 +126,6 @@
           "anchor": "Blog",
           "href": "https://flexype.io/blogs",
           "icon": "newspaper"
-        },
-        {
-          "anchor": "Docs & DashBoard",
-          "href": "https://docs.flexype.io/",
-          "icon": "book"
         }
       ]
     }
@@ -170,5 +148,8 @@
       "x": "https://x.com/FlexyPe",
       "linkedin": "https://linkedin.com/company/flexype"
     }
+  },
+  "contextual": {
+    "options": ["chatgpt", "claude", "perplexity", "mcp", "copy"]
   }
 }
