@@ -1,25 +1,12 @@
 ---
 title: "Bundle Coupon"
-description: "Create and configure Bundle Discounts to offer special pricing on grouped products or collections."
+description: "The **Bundle Coupon** empowers merchants to offer special pricing when customers purchase grouped products or collections together. Ideal for boosting AOV, promoting specific items, and driving conversion through intelligent bundle logic."
 ---
-
-<img
-  className="rounded-lg"
-  src="/images/coupons/AmountOffProducts_OrderDiscount/image.png"
-  alt="Bundle Discount menu"
-/>
-
-*Video walkthrough available – [Watch on YouTube](https://youtu.be/Wsu5FEjHHCM)*
-
-# Create Bundle Discount Coupon
-
-The **Bundle Discount Coupon** allows you to create promotions where customers receive special pricing when purchasing multiple products together. This type of discount is useful for product bundles, upsells, or incentivizing customers to purchase higher quantities.  
-
----
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Wsu5FEjHHCM" title="Bundle Discount Walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Step 1: Setup
 
-The **Setup** section defines how the coupon is applied and what discount value is offered.  
+Define your **Bundle Discount** logic in **Setup** — where you configure how the offer applies, which items it covers, and what value it delivers.
 
 <img
   className="rounded-lg"
@@ -27,25 +14,24 @@ The **Setup** section defines how the coupon is applied and what discount value 
   alt="Setup section"
 />
 
-**Options include:**  
-- **How the discount applies:**  
-  - *Coupon Code* – Customer enters a code at checkout.  
-  - *Automatic Discount* – Discount applies automatically.  
-- **Discount Code Example:** `BUNDLEBUY`.  
-- **Discount Types:**  
-  - *Fixed Bundle Price* – e.g., “2 items for ₹1499.”  
+**Key Options:**  
+- **Application Type:**  
+  - *Coupon Code* – Customers manually enter a code at checkout.  
+  - *Automatic Discount* – Applies automatically when conditions are met.  
+- **Discount Variants:**  
+  - *Fixed Bundle Price* – Example: “2 items for ₹1499.”  
   - *Fixed Amount Off* – Deduct a set value from the total.  
-  - *Percentage Off* – Deduct a percentage from the total price.  
-- **Applies To:**  
-  - *Specific Products* – Discount only applies to selected items.  
-  - *Specific Collections* – Discount applies to an entire collection.  
-- **Quantity Limit:** Restrict the number of items eligible under the bundle. Once the specified quantity is reached, the discount no longer applies.  
+  - *Percentage Off* – Apply a percent-based reduction.  
+- **Scope:**  
+  - *Specific Products* – Limit to certain SKUs.  
+  - *Collections* – Apply to predefined collections.  
+- **Quantity Limit:** Restrict eligible quantity under the bundle to avoid over-discounting.  
 
 ---
 
 ## Step 2: Condition
 
-The **Condition** section specifies purchase requirements before the bundle discount applies.  
+Configure **Condition** parameters to control when the discount activates.
 
 <img
   className="rounded-lg"
@@ -54,15 +40,15 @@ The **Condition** section specifies purchase requirements before the bundle disc
 />
 
 **Options include:**  
-- **No Requirement:** Applies to any order.  
-- **Minimum/Maximum Purchase Amount:** Restrict the discount to certain cart totals.  
-- **Minimum/Maximum Quantity of Items:** Restrict to specific cart sizes.  
+- **No Requirement:** Applies to all qualifying carts.  
+- **Min/Max Cart Value:** Ensure thresholds are met before activation.  
+- **Min/Max Item Quantity:** Gate bundle eligibility based on item count.  
 
 ---
 
 ## Step 3: User Eligibility
 
-The **User Eligibility** section defines which customers can access the bundle discount.  
+Target the right audience through **User Eligibility** for tailored promotions.
 
 <img
   className="rounded-lg"
@@ -71,18 +57,18 @@ The **User Eligibility** section defines which customers can access the bundle d
 />
 
 **Options include:**  
-- **All Users:** Discount is available for everyone.  
-- **Specific Users:** Restrict the discount to selected customers.  
-- **Order Specific:**  
+- **All Users** – Universally available.  
+- **Specific Users** – Apply to chosen customers or segments.  
+- **Order-Specific Logic:**  
   - *All orders*  
   - *First order only*  
-  - *Based on total order count*  
+  - *Based on total past orders*  
 
 ---
 
 ## Step 4: Usage Limits
 
-The **Usage Limits** section controls how often the bundle discount can be applied.  
+Protect revenue and control exposure using **Usage Limits**.
 
 <img
   className="rounded-lg"
@@ -91,17 +77,17 @@ The **Usage Limits** section controls how often the bundle discount can be appli
 />
 
 **Options include:**  
-- **Global Usage Limit:** Maximum times the coupon can be used.  
-- **Per Customer Limit:** Restrict use per individual.  
-- **Combine with Other Discounts:** Allow or disallow stacking with other promotions.  
-- **Discount Active Period:** Define start and end date/time.  
-- **Disable COD:** Optionally restrict Cash on Delivery when using this coupon.  
+- **Global Cap:** Total number of redemptions allowed.  
+- **Per-Customer Limit:** Restrict per individual.  
+- **Stacking Rules:** Enable or prevent combining with other discounts.  
+- **Active Duration:** Define start and end dates/times.  
+- **Disable COD:** Optional toggle to exclude cash-on-delivery orders.  
 
 ---
 
 ## Step 5: Preview
 
-The **Preview** section controls how the coupon appears to customers.  
+Curate the customer-facing experience with **Preview**.
 
 <img
   className="rounded-lg"
@@ -110,20 +96,18 @@ The **Preview** section controls how the coupon appears to customers.
 />
 
 **Options include:**  
-- **Coupon Visibility:** Decide whether the coupon is shown during checkout.  
-- **Custom Title and Details:** Add a descriptive title and explanation for clarity (e.g., *“Get 2 products for ₹1499”*).  
+- **Visibility:** Control whether the offer is shown at checkout or remains hidden.  
+- **Display Details:** Add descriptive titles and short summaries for clarity (e.g., *“Get 2 Hoodies for ₹1499”*).  
 
 ---
 
-## Why It Matters
+## Strategic Value
 
-Bundle discounts help businesses:  
-- Increase average order value by encouraging customers to buy more items together.  
-- Promote specific products or collections.  
-- Run seasonal or promotional campaigns (e.g., “Buy 2 Hoodies for ₹1499”).  
+This versatile bundle tool drives sales and engagement by:  
+- Increasing average order value through smart pairing and upselling.  
+- Promoting slow-moving or seasonal items via curated bundles.  
+- Supporting campaign goals without jeopardizing margins.  
 
-With precise controls on eligibility, limits, and visibility, FlexyPe makes it simple to configure bundle offers that boost sales without reducing margins unnecessarily.  
+With granular control over setup, conditions, and limits, the **Bundle Coupon** ensures precise, performance-driven promotions that scale seamlessly.  
 
----
-
-For a guided walkthrough, see the demo video attached above.  
+For a full walkthrough, refer to the embedded video above.

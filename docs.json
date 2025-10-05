@@ -145,14 +145,9 @@
           "icon": "newspaper"
         },
         {
-          "anchor": "Docs",
+          "anchor": "Docs & DashBoard",
           "href": "https://docs.flexype.io/",
           "icon": "book"
-        },
-        {
-          "anchor": "Dashboard",
-          "href": "https://docs.flexype.io/",
-          "icon": "bookmark"
         }
       ]
     }

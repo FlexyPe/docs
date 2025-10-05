@@ -1,27 +1,12 @@
 ---
 title: "Purchase Driven"
-description: "Create and configure Purchase Driven Coupons that reward customers based on their past purchasing behavior."
+description: "The **Purchase Driven Coupon** empowers merchants to create loyalty and retention campaigns by rewarding customers based on their past purchase behavior. Target repeat buyers, high spenders, or coupon users with precision-driven offers."
 ---
-
-<img
-  className="rounded-lg"
-  src="/images/coupons/AmountOffProducts_OrderDiscount/image.png"
-  alt="Purchase Driven Coupon menu"
-/>
-
-*Video walkthrough available – [Watch on YouTube](https://youtu.be/66YL7pXIyik)*
-
-# Create Purchase Driven Coupon
-
-The **Purchase Driven Coupon** allows you to target customers based on their purchase history or behavior. Unlike general discounts, these coupons are applied only when customers meet specific behavioral criteria such as having made a minimum number of purchases, reaching a spend threshold, or using a previous coupon code.  
-
-This type of coupon is useful for loyalty programs, retention campaigns, or rewarding frequent buyers.  
-
----
+<iframe width="560" height="315" src="https://www.youtube.com/embed/66YL7pXIyik" title="Purchase Driven Coupon Walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ## Step 1: Setup
 
-The **Setup** section determines how the discount applies and what value it carries.  
+Configure how the **Purchase Driven Coupon** applies and what value it offers in **Setup**.
 
 <img
   className="rounded-lg"
@@ -30,19 +15,19 @@ The **Setup** section determines how the discount applies and what value it carr
 />
 
 **Options include:**  
-- **How the discount applies:**  
-  - *Coupon Code* – Requires the customer to enter a code at checkout.  
-  - *Automatic Discount* – Applies automatically in cart and checkout.  
+- **Application Type:**  
+  - *Coupon Code* – Customers enter a code at checkout.  
+  - *Automatic Discount* – Applies automatically once conditions are met.  
 - **Discount Value:**  
-  - *Percentage off* – e.g., 5% off.  
-  - *Fixed amount* – e.g., ₹500 off.  
-- **Maximum Cap:** Set an upper limit on the total discount that can be applied.  
+  - *Percentage Off* – e.g., 5% off the total.  
+  - *Fixed Amount Off* – e.g., ₹500 off per order.  
+- **Maximum Cap:** Set an upper limit on the total discount amount.  
 
 ---
 
 ## Step 2: User Behavior
 
-The **User Behavior** section is unique to this coupon type. It specifies the conditions that must be met in past purchases.  
+Define behavioral triggers in **User Behavior** to target customers based on their past activity.
 
 <img
   className="rounded-lg"
@@ -51,19 +36,19 @@ The **User Behavior** section is unique to this coupon type. It specifies the co
 />
 
 **Options include:**  
-- **Behavior Period:** Define a date range (start and optional end date). Only purchases within this period are considered.  
-- **Customer Behavior Conditions:**  
-  - *Use Coupon Code* – Restrict to customers who previously used a specific coupon (e.g., `WELCOME10`).  
-  - *Minimum Order Amount* – Restrict to customers who previously made purchases above a set threshold.  
-  - *Minimum Number of Orders* – Restrict to customers with at least a defined number of past orders.  
+- **Behavior Period:** Choose a date range to consider customer activity (past X days/weeks/months).  
+- **Behavioral Conditions:**  
+  - *Used Specific Coupon* – e.g., customers who previously redeemed `WELCOME10`.  
+  - *Minimum Total Spend* – e.g., total lifetime purchases above ₹10,000.  
+  - *Minimum Number of Orders* – e.g., at least 3 past purchases.  
 
-These rules allow precise targeting of loyal or high-value customers.  
+This targeting ensures that only qualified, engaged customers benefit from the promotion.  
 
 ---
 
 ## Step 3: Condition
 
-The **Condition** section works like other discounts, defining the purchase requirements for applying the coupon.  
+Set **Condition** parameters to define current purchase requirements for applying the discount.
 
 <img
   className="rounded-lg"
@@ -71,17 +56,17 @@ The **Condition** section works like other discounts, defining the purchase requ
   alt="Condition section"
 />
 
-Options include:  
-- No purchase requirement  
-- Minimum/maximum purchase amount  
-- Minimum/maximum quantity of items  
-- Apply to: entire cart, specific products, or collections  
+**Options include:**  
+- **No Requirement:** Apply to any qualifying customer.  
+- **Min/Max Purchase Value:** Restrict based on order amount.  
+- **Min/Max Quantity:** Restrict based on item count.  
+- **Scope:** Apply to entire cart, specific products, or collections.  
 
 ---
 
 ## Step 4: User Eligibility
 
-The **User Eligibility** section is the same as other coupon types.  
+Control who can redeem the offer with **User Eligibility** settings.
 
 <img
   className="rounded-lg"
@@ -89,15 +74,20 @@ The **User Eligibility** section is the same as other coupon types.
   alt="User eligibility section"
 />
 
-Options include:  
-- *All users* or *specific users only*  
-- *All orders*, *first order only*, or based on *total order count*  
+**Options include:**  
+- **Audience Type:**  
+  - *All users*  
+  - *Specific users only*  
+- **Order Scope:**  
+  - *All orders*  
+  - *First order only*  
+  - *Based on total order count*  
 
 ---
 
 ## Step 5: Usage Limits
 
-The **Usage Limits** section defines how often the coupon can be used.  
+Manage how often the coupon can be used under **Usage Limits**.
 
 <img
   className="rounded-lg"
@@ -105,18 +95,18 @@ The **Usage Limits** section defines how often the coupon can be used.
   alt="Usage limits section"
 />
 
-Options include:  
-- Maximum number of uses overall  
-- Maximum number of uses per customer  
-- Allow combining with other discounts  
-- Define start/end active dates  
-- Optionally disable COD for this discount  
+**Options include:**  
+- **Global Usage Limit:** Maximum number of total redemptions.  
+- **Per-Customer Limit:** Restrict individual usage count.  
+- **Stacking Permissions:** Enable or disable use with other discounts.  
+- **Active Window:** Define start and end dates/times.  
+- **Disable COD:** Optionally restrict Cash on Delivery when active.  
 
 ---
 
 ## Step 6: Preview
 
-The **Preview** section controls how the coupon appears to customers.  
+Refine how the offer appears to customers under **Preview**.
 
 <img
   className="rounded-lg"
@@ -124,21 +114,19 @@ The **Preview** section controls how the coupon appears to customers.
   alt="Preview section"
 />
 
-Options include:  
-- Show or hide coupon visibility at checkout  
-- Add a **custom title and details** for clarity  
+**Options include:**  
+- **Coupon Visibility:** Show or hide during checkout.  
+- **Display Details:** Add titles and short descriptions (e.g., *“Exclusive 10% Loyalty Discount for Repeat Customers”*).  
 
 ---
 
-## Why It Matters
+## Strategic Value
 
-Purchase Driven Coupons allow you to reward customer loyalty and design highly targeted campaigns. By linking discounts to customer history, you can:  
-- Encourage repeat purchases.  
-- Incentivize higher-value transactions.  
-- Build personalized loyalty programs.  
+The **Purchase Driven Coupon** transforms behavioral data into targeted engagement by:  
+- Rewarding loyal customers and repeat buyers.  
+- Encouraging higher spending through milestone incentives.  
+- Powering data-driven loyalty programs and retention campaigns.  
 
-This approach ensures that discounts are used strategically, targeting the right customers without unnecessary margin loss.  
+With precise behavioral filters and flexible setup, FlexyPe enables personalized, performance-focused promotions that strengthen customer relationships without margin erosion.  
 
----
-
-For a guided walkthrough, see the demo video attached above.  
+For a complete walkthrough, view the embedded demo video above.
