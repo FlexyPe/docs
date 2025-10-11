@@ -1,11 +1,83 @@
 ---
 title: "Taxes & Duties"
+description: "Configure tax rates and overrides for your store to ensure GST compliance."
 ---
-Manage tax compliance for your store by configuring base tax rates and overrides.  
+Manage tax compliance by configuring base tax rates and collection-specific overrides.
 
-![Taxes & Duties Screenshot](/images/settings/image2.png)
+![Taxes & Duties Overview](/images/settings/image2.png)
 
-## Key Actions
-- **Regional Settings**: Review synchronized base tax values across states/regions.  
-- **Tax Exemptions**: Add overrides for specific product categories or collections.  
-- Ensure values align with your GST and federal tax obligations.  
+---
+
+## What You Can Do
+
+- Set base tax rates for different states/regions
+- Create tax overrides for specific product collections
+- Configure exemptions (0% tax) for eligible items
+- Ensure GST compliance across your store
+
+---
+
+## Adding a Tax Override
+
+![Tax Override Setup](/images/settings/image9.png)
+
+Configure custom tax rates for specific collections in three fields:
+
+### Collection Name
+The product collection you want to override.  
+Example: `Books`, `Luxury`, `Healthcare`
+
+Location (Scope)
+Where this override applies:
+- **India** - Applies nationwide
+- **Karnataka** - Applies only in Karnataka
+- **Maharashtra** - Applies only in Maharashtra
+- (Select any state as needed)
+
+### Tax Rate (%)
+The custom tax percentage:
+- `0` for tax-exempt items
+- `5`, `12`, `18`, `28` for GST rates
+
+Once saved, all products in that collection automatically use the override rate for the selected region.
+
+---
+
+## Migrating from Shopify
+
+| Shopify Setup | FlexyPe Setup |
+|---------------|---------------|
+| Manual collection for grouping | **Collection Name** field |
+| Override applies to collection | Same - create override |
+| State/region rules | **Location** selector |
+| Custom rate | **Tax Rate (%)** field |
+
+### Examples
+
+**Tax-exempt books nationwide:**
+- Collection Name: `Books`
+- Location: `India`
+- Tax Rate: `0`
+
+**Luxury items at 18% in Karnataka:**
+- Collection Name: `Luxury`
+- Location: `Karnataka`
+- Tax Rate: `18`
+
+---
+
+## Important Notes
+
+- **Customer exemptions override collection rules** - If a customer has tax-exempt status, it takes priority
+- **Shopify automatic collections** - Must be manually recreated in FlexyPe before setting overrides
+- **Updates apply immediately** - Changes recalculate taxes in real-time
+- **Multiple states** - Create separate overrides for each state-collection combination
+
+---
+
+## Common Use Cases
+
+- **Essential goods (0%)** - Grains, milk, basic necessities
+- **Healthcare (5%)** - Medicines, medical devices
+- **Standard goods (12% or 18%)** - Most products
+- **Luxury items (28%)** - Premium electronics, designer items

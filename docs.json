@@ -52,7 +52,7 @@
           },
           {
             "group": "Webhooks",
-            "pages": ["webhooks/acr"]
+            "pages": ["webhooks/acr", "webhooks/compareacr"]
           }
         ]
       },
