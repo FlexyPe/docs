@@ -93,8 +93,30 @@
       },
 
       {
+        "tab": "Pass",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": ["pass/introduction", "pass/overview"]
+          }
+        ]
+      },
+
+      {
         "tab": "API",
         "groups": [
+          {
+            "group": "Get Started",
+            "pages": ["api/introduction", "api/overview"]
+          },
+          {
+            "group": "Endpoints",
+            "pages": [
+              "api/endpoints/endpoint/create",
+              "api/endpoints/endpoint/get",
+              "api/endpoints/endpoint/delete"
+            ]
+          },
           {
             "group": "Webhooks",
             "pages": ["api/webhooks/acr"]
