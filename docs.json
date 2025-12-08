@@ -26,7 +26,10 @@
         "groups": [
           {
             "group": "Get Started",
-            "pages": ["introduction", "onboarding"]
+            "pages": [
+              "introduction",
+              "onboarding"
+            ]
           },
           {
             "group": "Integrations",
@@ -46,17 +49,23 @@
               },
               {
                 "group": "Analytics",
-                "pages": ["integrations/analytics/meta", "integrations/analytics/google-ads", "integrations/analytics/google-analytics"]
+                "pages": [
+                  "integrations/analytics/meta",
+                  "integrations/analytics/google-ads",
+                  "integrations/analytics/google-analytics"
+                ]
               }
             ]
           },
           {
             "group": "Webhooks",
-            "pages": ["webhooks/acr"]
+            "pages": [
+              "webhooks/asr",
+              "webhooks/acr"
+            ]
           }
         ]
       },
-
       {
         "tab": "Dashboard Handbook",
         "groups": [
@@ -83,7 +92,13 @@
               "upsell",
               {
                 "group": "Customization",
-                "pages": ["customizations/overview", "customizations/general", "customizations/login", "customizations/address", "customizations/payments"]
+                "pages": [
+                  "customizations/overview",
+                  "customizations/general",
+                  "customizations/login",
+                  "customizations/address",
+                  "customizations/payments"
+                ]
               },
               "rtosuite",
               {
@@ -104,13 +119,14 @@
           }
         ]
       },
-
       {
         "tab": "Changelog",
         "groups": [
           {
             "group": "Release Notes",
-            "pages": ["changelog"]
+            "pages": [
+              "changelog"
+            ]
           }
         ]
       }
@@ -150,6 +166,12 @@
     }
   },
   "contextual": {
-    "options": ["chatgpt", "claude", "perplexity", "mcp", "copy"]
+    "options": [
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "mcp",
+      "copy"
+    ]
   }
 }

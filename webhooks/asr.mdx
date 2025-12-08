@@ -1,0 +1,211 @@
+---
+title: Abandoned Session Recovery
+---
+
+The Abandoned Session Recovery Webhook is triggered when a visitor browses your store and demonstrates engagement without initiating checkout. This webhook captures browsing behavior, page visits, and any contact information provided during the session. It enables businesses to identify high-intent visitors early in their journey and engage them with personalized messaging, retargeting campaigns, or incentives before they leave the site. By leveraging this data, brands can reduce early-stage drop-offs and convert browsers into buyers.
+
+### Headers
+
+<ParamField body="X-Flexype-Authorization" type="string">
+    A secret key used to verify that the webhook request originated from FlexyPe. Ensure this token is validated to prevent unauthorized access.
+</ParamField>
+
+### Body
+
+<ParamField body="merchant_id" type="string">
+    Unique identifier for the merchant's store in FlexyPe.
+</ParamField>
+
+<ParamField body="shopify_domain" type="string">
+    The Shopify domain/subdomain for the merchant store.
+</ParamField>
+
+<ResponseField name="user" type="User Object">
+    Contact information captured during the browsing session, if available.
+    <Expandable title="properties">
+        <ResponseField name="full_name" type="string | null">
+            The visitor's full name, if provided during the session.
+        </ResponseField>
+
+        <ResponseField name="phone" type="string">
+            The visitor's phone number without country code.
+        </ResponseField>
+
+        <ResponseField name="dial_code" type="string">
+            The country code associated with the visitor's phone number.
+        </ResponseField>
+
+        <ResponseField name="email" type="string | null">
+            The visitor's email address, if provided during the session.
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<ResponseField name="cart_items" type="array">
+    List of products that were viewed or interacted with during the session. This may include items added to cart but not yet checked out.
+    <Expandable title="Item Properties">
+        <ResponseField name="product_id" type="number">
+            Unique identifier for the product in Shopify.
+        </ResponseField>
+
+        <ResponseField name="variant_id" type="number">
+            ID of the specific product variant viewed or interacted with.
+        </ResponseField>
+
+        <ResponseField name="quantity" type="number">
+            Number of units of the product (typically 1 for browsing sessions).
+        </ResponseField>
+
+        <ResponseField name="properties" type="object">
+            Additional custom properties or metadata associated with the product interaction.
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<ResponseField name="client_meta" type="ClientMeta Object">
+    Technical metadata about the visitor's device and request.
+    <Expandable title="properties">
+        <ResponseField name="client_ip" type="string | null">
+            IP address of the visitor during the browsing session.
+        </ResponseField>
+
+        <ResponseField name="http_referer" type="string | null">
+            The URL from which the visitor was referred to your store.
+        </ResponseField>
+
+        <ResponseField name="user_agent" type="string | null">
+            User agent string from the visitor's browser or device.
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<ResponseField name="metadata" type="Metadata Object">
+    Marketing attribution and tracking data captured from the visitor's landing page.
+    <Expandable title="properties">
+        <ResponseField name="utm" type="array">
+            An array of key–value pairs representing UTM and tracking parameters from the landing page URL.
+
+            **Allowed keys:**
+            - `fbclid`: Facebook Click ID
+            - `gclid`: Google Ads Click Identifier
+            - `utm_medium`: Type of marketing channel
+            - `utm_source`: Origin platform
+            - `utm_campaign`: Campaign name or identifier
+            - `utm_content`: Specific content or creative used
+            - `utm_term`: Paid search keyword or targeting term
+
+            <Expandable title="UTM Parameter Properties">
+                <ResponseField name="name" type="string">
+                    One of the allowed analytics parameter keys listed above.
+                </ResponseField>
+
+                <ResponseField name="value" type="string">
+                    The value associated with the given analytics parameter.
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+
+        <ResponseField name="orig_referer" type="string | null">
+            The original referrer URL from which the visitor landed on the store.
+        </ResponseField>
+
+        <ResponseField name="referer_host" type="string | null">
+            The host domain extracted from the original referrer URL.
+        </ResponseField>
+
+        <ResponseField name="landing_page" type="string | null">
+            The specific page path on the store where the visitor first landed.
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<ResponseField name="pages" type="array">
+    A chronological list of pages visited during the browsing session.
+    <Expandable title="Page Properties">
+        <ResponseField name="url" type="string">
+            The full URL of the page visited.
+        </ResponseField>
+
+        <ResponseField name="timestamp" type="string">
+            ISO 8601 formatted timestamp of when the page was visited.
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<ParamField body="last_page_visited" type="string | null">
+    The URL of the last page the visitor viewed before the session was abandoned.
+</ParamField>
+
+<ParamField body="last_activity_at" type="string | null">
+    ISO 8601 formatted timestamp of the visitor's last activity in the session.
+</ParamField>
+
+
+<RequestExample>
+```json Response
+{
+  "merchant_id": "12554340-1b6a-496c-5651-24bd9ef56bb4",
+  "shopify_domain": "flexype.myshopify.com",
+  "user": {
+    "full_name": "Roshan Kumar Chatei",
+    "phone": "7777788888",
+    "dial_code": "91",
+    "email": "roshan@example.com"
+  },
+  "cart_items": [
+    {
+      "product_id": 7516974022740,
+      "variant_id": 41564857663572,
+      "quantity": 1,
+      "properties": {
+        "color": "red"
+      }
+    }
+  ],
+  "client_meta": {
+    "client_ip": "103.45.67.89",
+    "http_referer": "https://www.google.com/search?q=premium+brownies",
+    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1"
+  },
+  "metadata": {
+    "utm": [
+      {
+        "name": "utm_source",
+        "value": "google"
+      },
+      {
+        "name": "utm_medium",
+        "value": "cpc"
+      },
+      {
+        "name": "utm_campaign",
+        "value": "holiday_sale_2025"
+      },
+      {
+        "name": "gclid",
+        "value": "Cj0KCQiA1sucBhDgARIsAFoytUvXYZ..."
+      }
+    ],
+    "orig_referer": "https://www.google.com",
+    "referer_host": "www.google.com",
+    "landing_page": "/collections/brownies"
+  },
+  "pages": [
+    {
+      "url": "https://flexype.myshopify.com/collections/brownies",
+      "timestamp": "2025-12-08T14:25:00Z"
+    },
+    {
+      "url": "https://flexype.myshopify.com/products/gluten-free-double-chocochunk-walnut",
+      "timestamp": "2025-12-08T14:27:30Z"
+    },
+    {
+      "url": "https://flexype.myshopify.com/products/classic-fudge-brownie",
+      "timestamp": "2025-12-08T14:30:15Z"
+    }
+  ],
+  "last_page_visited": "https://flexype.myshopify.com/products/classic-fudge-brownie",
+  "last_activity_at": "2025-12-08T14:30:45Z"
+}
+```
+</RequestExample>
