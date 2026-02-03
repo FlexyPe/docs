@@ -2,6 +2,77 @@
 title: 'XPay'
 ---
 
-> Webhook Setup for XPay (Coming Soon)
+Integrating XPay with FlexyPe enables fast, secure, and reliable payment processing directly through your checkout. With just a few steps, you can start accepting payments and ensure a smooth transaction experience for your customers.
 
-We're currently working on integrating XPay. Webhook setup instructions for payments will be available here shortly. Stay tuned!
+## Getting the Public Key and Secret Key
+
+<Steps>
+    <Step title="Access XPay Dashboard">
+        - Log in to your XPay Dashboard.
+        - Navigate to the **Settings** section.
+        - Open the **Your Keys** tab.
+        - Copy the **Public Key** and **Secret Key** and keep them handy for configuration.
+    </Step>
+</Steps>
+
+## SetUp XPay Webhooks
+
+<Steps>
+    <Step title="Access Webhook Settings in XPay">
+        - Log in to your XPay Dashboard.
+        - Navigate to the **Settings** section.
+        - Open the **Webhooks** tab.
+        - Click on **Set up Webhook**.
+    </Step>
+
+    <Step title="Add Webhook Endpoint and Events">
+        ```
+        https://api.flexype.in/v1/public/pg/xpay/webhook
+        ```
+        - Paste the above URL in the **Endpoint URL** field.
+        - Generate the **Secret**, copy it, and keep it handy for configuration.
+        - Under **Events to send**, enable all events starting with `intent`, including:
+            - Intent.checkout_opened
+            - Intent.created
+            - Intent.dispute_lost
+            - Intent.dispute_under_review
+            - Intent.dispute_won
+            - Intent.disputed
+            - Intent.failed
+            - Intent.refunded
+            - Intent.success
+        - Click **Create** to complete the webhook setup.
+    </Step>
+</Steps>
+
+## Integrate XPay with FlexyPe
+
+<Steps>
+    <Step title="Access Payments in FlexyPe Dashboard">
+        - Log in to your **FlexyPe Dashboard**.
+        - Click on the **Settings** menu.
+        - Select **Payments**.
+    </Step>
+
+    <Step title="Configure XPay">
+        - Click the **Configure** button within the **XPay** card.
+        - Paste the **Webhook Secret** into the **Signing Key (Webhook)** field.
+        - Paste the copied **Public Key** into the **Public Key** field.
+        - Paste the copied **Secret Key** into the **Secret** field.
+        - Click **Save** to complete the configuration.
+        <Warning>Do not delete the credentials if the payment provider is in use.</Warning>
+    </Step>
+</Steps>
+
+## Use XPay for Your Payment Methods
+
+<Steps>
+    <Step title="Assign XPay as Payment Provider">
+        - In the section below, you’ll see a list of available payment methods.
+        - If you want XPay to handle any of these methods, change the provider to **XPay**.
+        - Repeat this for each payment method you wish to route through XPay.
+        <Warning>Make sure XPay is fully configured before selecting it as a provider.</Warning>
+    </Step>
+</Steps>
+
+By following these steps, you’ll successfully integrate XPay with FlexyPe, enabling secure payment processing and a smooth checkout experience.
