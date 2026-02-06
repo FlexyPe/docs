@@ -8,15 +8,12 @@ Integrating XPay with FlexyPe enables fast, secure, and reliable payment process
 
 <Steps>
   <Step title="Access XPay Dashboard">
-    - Log in to your XPay Dashboard.
-
-    ![](/xpay1-1.png)
-
-    - Navigate to the **Settings** section from left sidebar.
-    - Open the **Your Keys** tab.
 
     ![](/Untitleddesign\(2\).png)
 
+    - Log in to your XPay Dashboard.
+    - Navigate to the **Settings** section from left sidebar.
+    - Open the **Your Keys** tab.
     - Copy the **Public Key** and **Secret Key** and keep them handy for configuration.
   </Step>
 </Steps>
@@ -25,12 +22,12 @@ Integrating XPay with FlexyPe enables fast, secure, and reliable payment process
 
 <Steps>
   <Step title="Access Webhook Settings in XPay">
-    - Log in to your XPay Dashboard.
-    - Navigate to the **Settings** section.
     - Open the **Webhooks** tab.
     - Click on **Set up Webhook**.
   </Step>
   <Step title="Add Webhook Endpoint and Events">
+
+    ![](/xpay4.png)
     ```
     https://api.flexype.in/v1/public/pg/xpay/webhook
     ```
@@ -47,9 +44,6 @@ Integrating XPay with FlexyPe enables fast, secure, and reliable payment process
       - Intent.failed
       - Intent.refunded
       - Intent.success
-
-    ![](/xpay4.png)
-
     - Click **Create** to complete the webhook setup.
   </Step>
 </Steps>
@@ -58,20 +52,22 @@ Integrating XPay with FlexyPe enables fast, secure, and reliable payment process
 
 <Steps>
   <Step title="Access Payments in FlexyPe Dashboard">
+
+    ![](/Settings.png)
+
     - Log in to your **FlexyPe Dashboard**.
     - Click on the **Settings** menu from left.
     - Select **Payments**.
-
-    ![](/Settings.png)
   </Step>
   <Step title="Configure XPay">
+
+    ![](/xpay5-1.png)
+
     - Click the **Configure** button within the **XPay** card.
     - Paste the **Webhook Secret** into the **Signing Key (Webhook)** field.
     - Paste the copied **Public Key** into the **Public Key** field.
     - Paste the copied **Secret Key** into the **Secret** field.
     - Click **Save** to complete the configuration.
-
-    ![](/xpay5-1.png)
 
     ![](/xpay6-2.png)
 
@@ -85,15 +81,7 @@ Integrating XPay with FlexyPe enables fast, secure, and reliable payment process
 
 <Steps>
   <Step title="Assign XPay as Payment Provider">
-    - In the section below, you’ll see a list of available payment methods.
-    - If you want XPay to handle any of these methods, change the provider to **XPay**.
-    - Repeat this for each payment method you wish to route through XPay.
-
-    ![](/xpay7.png)
-
-    <Warning>
-      Make sure XPay is fully configured before selecting it as a provider.
-    </Warning>
+    - Once above steps are implemented, contact FlexyPe team.
   </Step>
 </Steps>
 
