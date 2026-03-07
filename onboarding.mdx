@@ -1,6 +1,6 @@
 ---
-title: 'Onboarding'
-description: 'Get started with FlexyPe in just a few steps'
+title: "Onboarding"
+description: "Get started with FlexyPe in just a few steps"
 ---
 
 ## Collaborate Store with FlexyPe
@@ -12,6 +12,7 @@ description: 'Get started with FlexyPe in just a few steps'
       src="/images/onboarding/onboarding-1.png"
       alt="Hero Dark"
     />
+
     - Login to your Shopify Admin account.
     - Click on Settings on the bottom left panel.
   </Step>
@@ -21,8 +22,13 @@ description: 'Get started with FlexyPe in just a few steps'
       src="/images/onboarding/onboarding-2.png"
       alt="Hero Dark"
     />
+
     - Go to Users and then click on Security and scroll down to Collaborators section.
     - Copy the **Collaboration Code** and share it along with your **Store URL** so we can send you a collaboration request.
+
+    <Warning>
+      Please do **not** click on “Generate New Code” after sharing the collaboration code until the FlexyPe checkout integration is fully completed.
+    </Warning>
   </Step>
   <Step title="Accepting the collaboration request">
     <img
@@ -30,11 +36,13 @@ description: 'Get started with FlexyPe in just a few steps'
       src="/images/onboarding/onboarding-3.png"
       alt="Hero Dark"
     />
+
     - You will receive a collaboration request from **FlexyPe Developers**.
     - Please accept the request to begin your onboarding process.
-    <Warning>
-        As part of your onboarding, we’ll need a collaboration code to access your Shopify store. This allows us to assist more efficiently, both now and in the future. Our access is used solely for store-related support.
-    </Warning>
+
+    <Note>
+      As part of your onboarding, we’ll need a collaboration code to access your Shopify store. This allows us to assist more efficiently, both now and in the future. Our access is used solely for store-related support.
+    </Note>
   </Step>
 </Steps>
 
@@ -47,13 +55,14 @@ description: 'Get started with FlexyPe in just a few steps'
       src="/images/onboarding/onboarding-4.png"
       alt="Hero Dark"
     />
+
     - Once you accept the collaboration request, we’ll send you the installation link.
     - Click the link and follow the prompts to grant the necessary permissions.
     - Click **Install** to complete the app installation and get started.
   </Step>
 </Steps>
 
-##  Get Started with FlexyPe app
+## Get Started with FlexyPe app
 
 <Steps>
   <Step title="Open FlexyPe app">
@@ -62,84 +71,107 @@ description: 'Get started with FlexyPe in just a few steps'
       src="/images/onboarding/onboarding-5.png"
       alt="Hero Dark"
     />
+
     - Open your Shopify Admin account.
     - Click on Apps on the left panel and open FlexyPe app.
   </Step>
-    <Step title="Set Up Your Store">
+  <Step title="Set Up Your Store">
     <img
       className="rounded-lg"
       src="/images/onboarding/onboarding-6.png"
       alt="Hero Dark"
     />
+
     - Finish setting up your store by completing these sections:
-        - Business Type
-        - Business Details
-        - Business Team
-        - Payment Setup
+      - Business Type
+      - Business Details
+      - Business Team
+      - Payment Setup
+
     <Note>
-        Add your GST details, including GSTIN, to claim GST returns.
+      Add your GST details, including GSTIN, to claim GST returns.
     </Note>
-    </Step>
+  </Step>
 </Steps>
 
 ## Complete Pre-Integration Setup
 
 <Steps>
-    <Step title="Complete payment gateway setup">
-        <img
-            className="rounded-lg"
-            src="/images/onboarding/onboarding-7.png"
-            alt="Hero Dark"
-        />
-        - Open the FlexyPe app from your Shopify Admin.
-        - If you haven’t completed your payment gateway setup yet, visit [Payment Provider](/integrations/payment).
-        - Setup is required before proceeding with the integration.
-    </Step>
-    <Step title="Connect advertising tools">
-        <img
-            className="rounded-lg"
-            src="/images/onboarding/onboarding-8.png"
-            alt="Hero Dark"
-        />
-        - Connect Meta Pixel, Google Ads, and Google Analytics if you plan to run ads.
-        - For easy step-by-step instructions, visit [Analytics](/onboarding).
-    </Step>
-    <Step title="Explore app features and settings">
-        - Review the key features available within the app.
-        - Adjust settings as needed to tailor the app to your business requirements.
-    </Step>
-    <Step title="Choose your theme for integration">
-        <img
-            className="rounded-lg"
-            src="/images/onboarding/onboarding-9.png"
-            alt="Hero Dark"
-        />
-        - Let us know which theme you'd like duplicated for the integration.
-        - If no theme is specified, we will duplicate your live theme and proceed with the integration there.
-    </Step>
+  <Step title="Complete payment gateway setup">
+    <Note>
+      If you didn’t configure the Payment Gateways right after installing the FlexyPe app and completing the initial setup, you can still do it later by logging into your FlexyPe dashboard.
+    </Note>
+    If you already have **active accounts** with the following Payment Gateways, please note the below:
+
+    1. [**PayU**](https://docs.flexype.io/integrations/payment/payu) – Credentials can be accessed from the PayU dashboard, and webhook setup is mandatory. Configuration happens instantly once done.
+    2. [**Cashfree**](https://docs.flexype.io/integrations/payment/cashfree) – Credentials are available in the Cashfree dashboard, and webhook setup is required. Configuration is completed instantly thereafter.
+    3. [**XPay**](https://docs.flexype.io/integrations/payment/xpay) – Credentials are available in the XPay dashboard, and webhook configuration is required. Setup is completed instantly after this.
+    4. [**Easebuzz**](https://docs.flexype.io/integrations/payment/easebuzz) – Credentials will be shared by the Easebuzz team, and webhook configuration is required. Once credentials are received, the PG configuration can be completed instantly.
+    5. [**Razorpay**](https://docs.flexype.io/integrations/payment/razorpay) – Account authorization is required and webhook setup is not needed. Setup is completed instantly after this.
+    6. [**PhonePe**](https://docs.flexype.io/integrations/payment/phonepe) – MID needs to be shared to FlexyPe team. The mapping process is handled manually from our end and typically takes up to a week to complete.
+
+    <Note>
+      Click on the payment gateway name from the above list to view the complete configuration process.
+    </Note>
+    <img
+      className="rounded-lg"
+      src="/images/onboarding/onboarding-7.png"
+      alt="Hero Dark"
+    />
+
+    - Open the FlexyPe app from your Shopify Admin.
+    - If you haven’t completed your payment gateway setup yet, visit [Payment Provider](/integrations/payment).
+    - Setup is required before proceeding with the integration.
+    - After completing the payment gateway setup, select the gateways you wish to enable for each **Payment Method**.
+  </Step>
+  <Step title="Connect advertising tools">
+    <img
+      className="rounded-lg"
+      src="/images/onboarding/onboarding-8.png"
+      alt="Hero Dark"
+    />
+
+    - Connect Meta Pixel, Google Ads, and Google Analytics if you plan to run ads.
+    - For easy step-by-step instructions, visit [Analytics](/onboarding).
+  </Step>
+  <Step title="Explore app features and settings">
+    - Review the key features available within the app.
+    - Adjust settings as needed to tailor the app to your business requirements.
+  </Step>
+  <Step title="Choose your theme for integration">
+    <img
+      className="rounded-lg"
+      src="/images/onboarding/onboarding-9.png"
+      alt="Hero Dark"
+    />
+
+    - Let us know which theme you'd like duplicated for the integration.
+    - If no theme is specified, we will duplicate your live theme and proceed with the integration there.
+  </Step>
 </Steps>
 
 ## Theme Setup to Go Live
 
 <Steps>
-    <Step title="Preview and verify integration">
-        <img
-            className="rounded-lg"
-            src="/images/onboarding/onboarding-10.png"
-            alt="Hero Dark"
-        />
-        - Within 12 hours of confirming your theme, we’ll provide a preview or testing link.
-        - Use this link to review and verify the integration before giving final approval.
-    </Step>
-    <Step title="Final setup and go live">
-        <img
-            className="rounded-lg"
-            src="/images/onboarding/onboarding-11.png"
-            alt="Hero Dark"
-        />
-        - Once you’ve reviewed the testing link, confirm if everything looks good so we can make the integration live.
-        - Review our <a href="/onboarding-guide" target="_blank">Onboarding Guide</a> to ensure everything is ready before your store goes live.
-    </Step>
+  <Step title="Preview and verify integration">
+    <img
+      className="rounded-lg"
+      src="/images/onboarding/onboarding-10.png"
+      alt="Hero Dark"
+    />
+
+    - Within 12 hours of confirming your theme, we’ll provide a preview or testing link.
+    - Use this link to review and verify the integration before giving final approval.
+  </Step>
+  <Step title="Final setup and go live">
+    <img
+      className="rounded-lg"
+      src="/images/onboarding/onboarding-11.png"
+      alt="Hero Dark"
+    />
+
+    - Once you’ve reviewed the testing link, confirm if everything looks good so we can make the integration live.
+  </Step>
 </Steps>
 
 ## Keep Growing with FlexyPe
@@ -148,15 +180,13 @@ We typically complete the onboarding process within **24–48 hours**, and we’
 
 To get the most out of FlexyPe and stay informed:
 
-> 💬 **Join our [WhatsApp community](https://chat.whatsapp.com/FefLuQOz4TL2bCpIebzPOH)**
-> Stay updated on new features, receive expert tips, and connect with other merchants.
+> 💬 [**Join our WhatsApp community**](https://chat.whatsapp.com/FefLuQOz4TL2bCpIebzPOH) Stay updated on new features, receive expert tips, and connect with other merchants.
 
 If you haven’t signed up with a Payment Gateway yet, let us know — we’ll connect you with our trusted partners who can guide you through the sign-up process.
 
 <Note>
-    While we're happy to refer you to a payment provider, all technical support or queries related to the gateway should be directed to their dedicated support team for the best assistance.
+  While we're happy to refer you to a payment provider, all technical support or queries related to the gateway should be directed to their dedicated support team for the best assistance.
 </Note>
-
 
 ## Need help?
 
