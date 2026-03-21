@@ -1,0 +1,78 @@
+---
+title: New Customer
+---
+
+The New Customer Webhook is triggered when a new customer is created in your store through FlexyPePass. This webhook provides real-time customer data including contact details, enabling businesses to sync customer information with external CRMs, marketing platforms, or loyalty programs. By leveraging this integration, brands can automate onboarding workflows, send welcome messages, and build personalized customer experiences from the very first interaction.
+
+### Headers
+
+<ParamField body="X-Flexype-Authorization" type="string">
+    A secret key used to verify that the webhook request originated from FlexyPe. Ensure this token is validated to prevent unauthorized access.
+</ParamField>
+
+### Body
+
+<ParamField body="event_id" type="string">
+    Unique identifier for this webhook event.
+</ParamField>
+
+<ParamField body="event_type" type="string">
+    The type of event that triggered this webhook. Value: `new_customer`.
+</ParamField>
+
+<ParamField body="timestamp" type="string">
+    ISO 8601 formatted timestamp of when the event was triggered.
+</ParamField>
+
+<ParamField body="store_domain" type="string">
+    The Shopify domain/subdomain for the merchant store.
+</ParamField>
+
+<ResponseField name="customer" type="Customer Object">
+    Details of the newly created customer.
+    <Expandable title="properties">
+        <ResponseField name="shopify_customer_id" type="string">
+            The globally unique Shopify identifier for the customer (GID format).
+        </ResponseField>
+
+        <ResponseField name="first_name" type="string">
+            The customer's first name.
+        </ResponseField>
+
+        <ResponseField name="last_name" type="string">
+            The customer's last name.
+        </ResponseField>
+
+        <ResponseField name="email" type="string">
+            The customer's email address.
+        </ResponseField>
+
+        <ResponseField name="phone" type="string">
+            The customer's phone number including country code.
+        </ResponseField>
+
+        <ResponseField name="dial_code" type="string">
+            The country code associated with the customer's phone number.
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+
+<RequestExample>
+```json Response
+{
+  "event_id": "357753c2-5b81-4926-a845-c9e950ef9e1d",
+  "event_type": "new_customer",
+  "timestamp": "2026-03-21T07:17:18.169Z",
+  "store_domain": "bombay-farmers-co.myshopify.com",
+  "customer": {
+    "shopify_customer_id": "gid://shopify/Customer/9020480127037",
+    "first_name": "Hetvi",
+    "last_name": ".",
+    "email": "angelhetvi18@gmail.com",
+    "phone": "+917506669988",
+    "dial_code": "91"
+  }
+}
+```
+</RequestExample>

@@ -60,8 +60,9 @@
           {
             "group": "Webhooks",
             "pages": [
-              "webhooks/asr",
-              "webhooks/acr"
+              "webhooks/new-customer",
+              "webhooks/acr",
+              "webhooks/asr"
             ]
           }
         ]
