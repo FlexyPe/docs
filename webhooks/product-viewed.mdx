@@ -1,8 +1,8 @@
 ---
-title: New Customer
+title: Product Viewed
 ---
 
-The New Customer Webhook is triggered when a new customer is created in your store through FlexyPePass. This webhook provides real-time customer data including contact details, enabling businesses to sync customer information with external CRMs, marketing platforms, or loyalty programs. By leveraging this integration, brands can automate onboarding workflows, send welcome messages, and build personalized customer experiences from the very first interaction.
+The Product Viewed Webhook is triggered when a customer views a specific product page in your store. This information is crucial for understanding product popularity and customer preferences, enabling targeted marketing and personalized product recommendations.
 
 ### Headers
 
@@ -10,7 +10,7 @@ The New Customer Webhook is triggered when a new customer is created in your sto
     A secret key used to verify that the webhook request originated from FlexyPe. Ensure this token is validated to prevent unauthorized access.
 </ParamField>
 <ParamField body="X-Webhook-Version" type="string" required>
-    The version of the webhook payload. Possible values: `2025-09`, `2026-05`.
+    The version of the webhook payload. For this event, it is `2026-05`.
 </ParamField>
 
 ### Body
@@ -23,7 +23,7 @@ The New Customer Webhook is triggered when a new customer is created in your sto
 </ResponseField>
 
 <ResponseField name="event_type" type="string">
-    The type of event. For this webhook, it is `NEW_CUSTOMER`.
+    The type of event. For this webhook, it is `PRODUCT_VIEWED`.
 </ResponseField>
 
 <ResponseField name="event_id" type="string">
@@ -40,7 +40,7 @@ The New Customer Webhook is triggered when a new customer is created in your sto
             Name of the store.
         </ResponseField>
         <ResponseField name="shopify_domain" type="string">
-            The Shopify domain of the store (e.g., `store.myshopify.com`).
+            The Shopify domain of the store.
         </ResponseField>
         <ResponseField name="main_domain" type="string">
             The primary domain of the store.
@@ -78,8 +78,28 @@ The New Customer Webhook is triggered when a new customer is created in your sto
             </Expandable>
         </ResponseField>
 
-        <ResponseField name="shopify_customer_id" type="string">
-            The globally unique Shopify identifier for the customer.
+        <ResponseField name="product_viewed" type="object">
+            Details of the product viewed.
+            <Expandable title="Product View Properties">
+                <ResponseField name="product_id" type="number">
+                    Shopify product ID.
+                </ResponseField>
+                <ResponseField name="variant_id" type="number">
+                    Shopify variant ID.
+                </ResponseField>
+                <ResponseField name="title" type="string">
+                    Title of the product.
+                </ResponseField>
+                <ResponseField name="handle" type="string">
+                    Shopify product handle.
+                </ResponseField>
+                <ResponseField name="image" type="string">
+                    URL of the product image.
+                </ResponseField>
+                <ResponseField name="timestamp" type="string">
+                    The ISO 8601 timestamp of the view.
+                </ResponseField>
+            </Expandable>
         </ResponseField>
     </Expandable>
 </ResponseField>
@@ -88,8 +108,8 @@ The New Customer Webhook is triggered when a new customer is created in your sto
 ```json 2026-05
 {
   "event_time": "2026-05-07T10:00:00Z",
-  "event_type": "NEW_CUSTOMER",
-  "event_id": "evt_789123456",
+  "event_type": "PRODUCT_VIEWED",
+  "event_id": "evt_456123789",
   "store": {
     "id": "store_01",
     "name": "My Awesome Store",
@@ -106,65 +126,14 @@ The New Customer Webhook is triggered when a new customer is created in your sto
       "phone": "9876543210",
       "phone_with_dial_code": "+919876543210"
     },
-    "shopify_customer_id": "gid://shopify/Customer/123456789"
-  }
-}
-```
-</RequestExample>
-
-</Tab>
-
-<Tab title="2025-09">
-
-<ResponseField name="store_domain" type="string">
-    The Shopify domain/subdomain for the merchant store.
-</ResponseField>
-
-<ResponseField name="shopify_domain" type="string">
-    The Shopify domain for the merchant store.
-</ResponseField>
-
-<ResponseField name="customer" type="object">
-    Details of the newly created customer.
-     <Expandable title="properties">
-        <ResponseField name="shopify_customer_id" type="string">
-            The globally unique Shopify identifier for the customer (GID format).
-        </ResponseField>
-
-        <ResponseField name="first_name" type="string">
-            The customer's first name.
-        </ResponseField>
-
-        <ResponseField name="last_name" type="string">
-            The customer's last name.
-        </ResponseField>
-
-        <ResponseField name="email" type="string">
-            The customer's email address.
-        </ResponseField>
-
-        <ResponseField name="phone" type="string">
-            The customer's phone number including country code.
-        </ResponseField>
-
-        <ResponseField name="dial_code" type="string">
-            The country code associated with the customer's phone number.
-        </ResponseField>
-    </Expandable>
-</ResponseField>
-
-<RequestExample>
-```json 2025-09
-{
-  "store_domain": "my-store.myshopify.com",
-  "shopify_domain": "my-store.myshopify.com",
-  "customer": {
-    "shopify_customer_id": "gid://shopify/Customer/123456789",
-    "first_name": "Jane",
-    "last_name": "Doe",
-    "email": "jane@example.com",
-    "phone": "9876543210",
-    "dial_code": "91"
+    "product_viewed": {
+      "product_id": 12345,
+      "variant_id": 67890,
+      "title": "Cool T-Shirt",
+      "handle": "cool-t-shirt",
+      "image": "https://cdn.shopify.com/products/item.jpg",
+      "timestamp": "2026-05-07T10:00:00Z"
+    }
   }
 }
 ```
