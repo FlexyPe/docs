@@ -2,21 +2,27 @@
 title: Abandoned Session Recovery
 ---
 
-The Abandoned Session Recovery Webhook is triggered when a visitor browses your store and demonstrates engagement without initiating checkout. This webhook captures browsing behavior, page visits, and any contact information provided during the session. It enables businesses to identify high-intent visitors early in their journey and engage them with personalized messaging, retargeting campaigns, or incentives before they leave the site. By leveraging this data, brands can reduce early-stage drop-offs and convert browsers into buyers.
+The Abandoned Session Recovery webhook is triggered when a visitor browses your store and shows engagement but does not initiate a checkout session. If no checkout session is created within 15 minutes of their last activity, this webhook fires automatically.
+This webhook captures browsing behavior, page visits, and any contact information provided during the session — enabling you to identify high-intent visitors early in their journey and engage them with personalized messaging, retargeting campaigns, or incentives before they leave.
+By leveraging this data, brands can reduce early-stage drop-offs and convert browsers into buyers.
 
 ### Headers
 
-<ParamField body="X-Flexype-Authorization" type="string" required>
+<ParamField body="X-Flexype-Authorization" type="string">
     A secret key used to verify that the webhook request originated from FlexyPe. Ensure this token is validated to prevent unauthorized access.
 </ParamField>
-<ParamField body="X-Webhook-Version" type="string" required>
-    The version of the webhook payload. Possible values: `2025-09`, `2026-05`.
+<ParamField body="X-Webhook-Version" type="string">
+    The version of the webhook payload. Here, the value will be `2026-05`.
+</ParamField>
+<ParamField body="X-Webhook-Id" type="string">
+  The unique identifier of the webhook configured for your store.
+</ParamField>
+<ParamField body="X-Event-Id" type="string">
+  The unique identifier for the event that triggered this webhook.
 </ParamField>
 
 ### Body
 
-<Tabs>
-<Tab title="2026-05 (Latest)">
 
 <ResponseField name="event_time" type="string">
     The ISO 8601 timestamp when the event occurred.
@@ -210,7 +216,7 @@ The Abandoned Session Recovery Webhook is triggered when a visitor browses your 
 </ResponseField>
 
 <RequestExample>
-```json 2026-05
+```json Response
 {
   "event_time": "2026-05-07T10:00:00Z",
   "event_type": "ABANDONED_SESSION",
@@ -263,164 +269,3 @@ The Abandoned Session Recovery Webhook is triggered when a visitor browses your 
 }
 ```
 </RequestExample>
-
-</Tab>
-
-<Tab title="2025-09">
-<ParamField body="merchant_id" type="string">
-    Unique identifier for the merchant's store in FlexyPe.
-</ParamField>
-
-<ParamField body="shopify_domain" type="string">
-    The Shopify domain/subdomain for the merchant store.
-</ParamField>
-
-<ResponseField name="user" type="User Object">
-    Contact information captured during the browsing session, if available.
-    <Expandable title="properties">
-        <ResponseField name="full_name" type="string | null">
-            The visitor's full name, if provided during the session.
-        </ResponseField>
-
-        <ResponseField name="phone" type="string">
-            The visitor's phone number without country code.
-        </ResponseField>
-
-        <ResponseField name="dial_code" type="string">
-            The country code associated with the visitor's phone number.
-        </ResponseField>
-
-        <ResponseField name="email" type="string | null">
-            The visitor's email address, if provided during the session.
-        </ResponseField>
-    </Expandable>
-</ResponseField>
-
-<ResponseField name="cart_items" type="array">
-    List of products that were viewed or interacted with during the session. This may include items added to cart but not yet checked out.
-    <Expandable title="Item Properties">
-        <ResponseField name="product_id" type="number">
-            Unique identifier for the product in Shopify.
-        </ResponseField>
-
-        <ResponseField name="variant_id" type="number">
-            ID of the specific product variant viewed or interacted with.
-        </ResponseField>
-
-        <ResponseField name="quantity" type="number">
-            Number of units of the product (typically 1 for browsing sessions).
-        </ResponseField>
-
-        <ResponseField name="properties" type="object">
-            Additional custom properties or metadata associated with the product interaction.
-        </ResponseField>
-    </Expandable>
-</ResponseField>
-
-<ResponseField name="client_meta" type="ClientMeta Object">
-    Technical metadata about the visitor's device and request.
-    <Expandable title="properties">
-        <ResponseField name="client_ip" type="string | null">
-            IP address of the visitor during the browsing session.
-        </ResponseField>
-
-        <ResponseField name="http_referer" type="string | null">
-            The URL from which the visitor was referred to your store.
-        </ResponseField>
-
-        <ResponseField name="user_agent" type="string | null">
-            User agent string from the visitor's browser or device.
-        </ResponseField>
-    </Expandable>
-</ResponseField>
-
-<ResponseField name="metadata" type="Metadata Object">
-    Marketing attribution and tracking data captured from the visitor's landing page.
-    <Expandable title="properties">
-        <ResponseField name="utm" type="array">
-            An array of key–value pairs representing UTM and tracking parameters from the landing page URL.
-
-            **Allowed keys:**
-            - `fbclid`: Facebook Click ID
-            - `gclid`: Google Ads Click Identifier
-            - `utm_medium`: Type of marketing channel
-            - `utm_source`: Origin platform
-            - `utm_campaign`: Campaign name or identifier
-            - `utm_content`: Specific content or creative used
-            - `utm_term`: Paid search keyword or targeting term
-
-            <Expandable title="UTM Parameter Properties">
-                <ResponseField name="name" type="string">
-                    One of the allowed analytics parameter keys listed above.
-                </ResponseField>
-
-                <ResponseField name="value" type="string">
-                    The value associated with the given analytics parameter.
-                </ResponseField>
-            </Expandable>
-        </ResponseField>
-
-        <ResponseField name="orig_referer" type="string | null">
-            The original referrer URL from which the visitor landed on the store.
-        </ResponseField>
-
-        <ResponseField name="referer_host" type="string | null">
-            The host domain extracted from the original referrer URL.
-        </ResponseField>
-
-        <ResponseField name="landing_page" type="string | null">
-            The specific page path on the store where the visitor first landed.
-        </ResponseField>
-    </Expandable>
-</ResponseField>
-
-<ResponseField name="pages" type="array">
-    A chronological list of pages visited during the browsing session.
-    <Expandable title="Page Properties">
-        <ResponseField name="url" type="string">
-            The full URL of the page visited.
-        </ResponseField>
-
-        <ResponseField name="timestamp" type="string">
-            ISO 8601 formatted timestamp of when the page was visited.
-        </ResponseField>
-    </Expandable>
-</ResponseField>
-
-<ParamField body="last_page_visited" type="string | null">
-    The URL of the last page the visitor viewed before the session was abandoned.
-</ParamField>
-
-<ParamField body="last_activity_at" type="string | null">
-    ISO 8601 formatted timestamp of the visitor's last activity in the session.
-</ParamField>
-
-<RequestExample>
-```json 2025-09
-{
-  "merchant_id": "123",
-  "shopify_domain": "my-store.myshopify.com",
-  "user": {
-    "full_name": "Jane Doe",
-    "phone": "9876543210",
-    "dial_code": "91",
-    "email": "jane@example.com"
-  },
-  "cart_items": [],
-  "client_meta": {
-    "client_ip": "1.1.1.1",
-    "http_referer": "",
-    "user_agent": ""
-  },
-  "metadata": {},
-  "pages": [],
-  "products_viewed": [],
-  "collections_viewed": [],
-  "last_page_visited": "https://my-store.com/products/cool-t-shirt",
-  "last_activity_at": "2025-09-01T09:55:00Z"
-}
-```
-</RequestExample>
-
-</Tab>
-</Tabs>

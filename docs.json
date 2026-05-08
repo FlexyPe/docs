@@ -36,6 +36,7 @@
             "pages": [
               {
                 "group": "Payment Providers",
+                "icon": "credit-card",
                 "pages": [
                   "integrations/payment/razorpay",
                   "integrations/payment/easebuzz",
@@ -49,6 +50,7 @@
               },
               {
                 "group": "Analytics",
+                "icon": "chart-bar",
                 "pages": [
                   "integrations/analytics/meta",
                   "integrations/analytics/google-ads",
@@ -60,11 +62,27 @@
           {
             "group": "Webhooks",
             "pages": [
-              "webhooks/acr",
-              "webhooks/asr",
-              "webhooks/collection-viewed",
-              "webhooks/product-viewed",
-              "webhooks/new-customer"
+              {
+                "group": "2026-05",
+                "tag": "LATEST",
+                "icon": "sparkles", 
+                "pages": [
+                  "webhooks/2026-05/acr",
+                  "webhooks/2026-05/asr",
+                  "webhooks/2026-05/collection-viewed",
+                  "webhooks/2026-05/product-viewed",
+                  "webhooks/2026-05/new-customer"
+                ]
+              },
+              {
+                "group": "2025-09",
+                "icon": "clock-rotate-left",
+                "pages": [
+                  "webhooks/2025-09/acr",
+                  "webhooks/2025-09/asr",
+                  "webhooks/2025-09/new-customer"
+                ]
+              }
             ]
           }
         ]

@@ -6,17 +6,20 @@ The Collection Viewed Webhook is triggered when a customer views a specific coll
 
 ### Headers
 
-<ParamField body="X-Flexype-Authorization" type="string" required>
+<ParamField body="X-Flexype-Authorization" type="string">
     A secret key used to verify that the webhook request originated from FlexyPe. Ensure this token is validated to prevent unauthorized access.
 </ParamField>
-<ParamField body="X-Webhook-Version" type="string" required>
-    The version of the webhook payload. For this event, it is `2026-05`.
+<ParamField body="X-Webhook-Version" type="string">
+    The version of the webhook payload. Here, the value will be `2026-05`.
+</ParamField>
+<ParamField body="X-Webhook-Id" type="string">
+  The unique identifier of the webhook configured for your store.
+</ParamField>
+<ParamField body="X-Event-Id" type="string">
+  The unique identifier for the event that triggered this webhook.
 </ParamField>
 
 ### Body
-
-<Tabs>
-<Tab title="2026-05 (Latest)">
 
 <ResponseField name="event_time" type="string">
     The ISO 8601 timestamp when the event occurred.
@@ -102,7 +105,7 @@ The Collection Viewed Webhook is triggered when a customer views a specific coll
 </ResponseField>
 
 <RequestExample>
-```json 2026-05
+```json Response
 {
   "event_time": "2026-05-07T10:00:00Z",
   "event_type": "COLLECTION_VIEWED",
@@ -134,6 +137,3 @@ The Collection Viewed Webhook is triggered when a customer views a specific coll
 }
 ```
 </RequestExample>
-
-</Tab>
-</Tabs>
