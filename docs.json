@@ -194,5 +194,12 @@
       "mcp",
       "copy"
     ]
-  }
+  },
+  "redirects": [
+    { "source": "/webhooks/acr",                "destination": "/webhooks/2026-05/acr" },
+    { "source": "/webhooks/asr",                "destination": "/webhooks/2026-05/asr" },
+    { "source": "/webhooks/collection-viewed",  "destination": "/webhooks/2026-05/collection-viewed" },
+    { "source": "/webhooks/product-viewed",     "destination": "/webhooks/2026-05/product-viewed" },
+    { "source": "/webhooks/new-customer",       "destination": "/webhooks/2026-05/new-customer" }
+  ]
 }
