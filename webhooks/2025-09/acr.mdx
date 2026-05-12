@@ -9,8 +9,47 @@ The Abandoned Checkout Recovery Webhook is triggered whenever a checkout session
 <ParamField body="X-Flexype-Authorization" type="string">
     A secret key used to verify that the webhook request originated from FlexyPe. Ensure this token is validated to prevent unauthorized access.
 </ParamField>
+<ParamField body="X-Webhook-Version" type="string">
+    The version of the webhook payload. Here, the value will be `2025-09`.
+</ParamField>
+<ParamField body="X-Webhook-Id" type="string">
+  The unique identifier of the webhook configured for your store.
+</ParamField>
+<ParamField body="X-Event-Id" type="string">
+  The unique identifier for the event that triggered this webhook.
+</ParamField>
 
 ### Body
+
+<ResponseField name="shopify_domain" type="string">
+    The Shopify domain of the store (e.g., `store.myshopify.com`).
+</ResponseField>
+
+<ParamField body="checkout_url" type="string">
+    URL to redirect the user to FlexyPe Checkout.
+</ParamField>
+
+<ParamField body="discount" type="number" default="0">
+    The total discount applied to the entire cart, in the store’s currency.
+</ParamField>
+
+<ParamField body="total_payable" type="number">
+    The final amount the user has to pay after discounts and calculations.
+</ParamField>
+
+<ParamField body="session_state" type="string">
+    The current status of the checkout session. This field reflects which step the user is on during their cart journey.
+
+    **Possible values:**
+    - `INITIATED`: Cart session has been created but no user input has been provided.
+    - `PHONE_ENTERED`: User has entered a phone number.
+    - `OTP_VERIFIED`: User has successfully verified the OTP.
+    - `ADDRESS_LOADED`: Address screen has been rendered or prefilled.
+    - `ADDRESS_SHIPPING_SELECTED`: Shipping method has been selected after address submission.
+    - `PAYMENT_LOADED`: Payment screen has been rendered.
+    - `PAYMENT_INITIATED`: Payment has been initiated by the user.
+    - `COMPLETED`: Order has been successfully completed.
+</ParamField>
 
 <ResponseField name="cart_items" type="array">
     List of products currently added to the user's cart at the time of checkout.
@@ -89,32 +128,6 @@ The Abandoned Checkout Recovery Webhook is triggered whenever a checkout session
         </ResponseField>
     </Expandable>
 </ResponseField>
-
-<ParamField body="checkout_url" type="string">
-    URL to redirect the user to FlexyPe Checkout.
-</ParamField>
-
-<ParamField body="discount" type="number" default="0">
-    The total discount applied to the entire cart, in the store’s currency.
-</ParamField>
-
-<ParamField body="total_payable" type="number">
-    The final amount the user has to pay after discounts and calculations.
-</ParamField>
-
-<ParamField body="session_state" type="string">
-    The current status of the checkout session. This field reflects which step the user is on during their cart journey.
-
-    **Possible values:**
-    - `INITIATED`: Cart session has been created but no user input has been provided.
-    - `PHONE_ENTERED`: User has entered a phone number.
-    - `OTP_VERIFIED`: User has successfully verified the OTP.
-    - `ADDRESS_LOADED`: Address screen has been rendered or prefilled.
-    - `ADDRESS_SHIPPING_SELECTED`: Shipping method has been selected after address submission.
-    - `PAYMENT_LOADED`: Payment screen has been rendered.
-    - `PAYMENT_INITIATED`: Payment has been initiated by the user.
-    - `COMPLETED`: Order has been successfully completed.
-</ParamField>
 
 <ResponseField name="user" type="User Object">
     <Expandable title="properties">
@@ -248,94 +261,34 @@ The Abandoned Checkout Recovery Webhook is triggered whenever a checkout session
     </Expandable>
 </ResponseField>
 
-
 <RequestExample>
 ```json Response
 {
-  "cart_items": [
-    {
-      "image": "https://cdn.shopify.com/s/files/1/0598/4564/0276/files/wallnut_brownie_1st_slide.jpg?v=1745323290",
-      "title": "400gms / Gluten-Free",
-      "discount": 0,
-      "price": 630,
-      "quantity": 1,
-      "variant": {
-        "title": "400gms / Gluten-Free",
-        "price": 630,
-        "variant_id": 41564857663572,
-        "compare_at_price": 700
-      },
-      "product_id": 7516974022740,
-      "variant_id": 41564857663572,
-      "grams": 0,
-      "handle": "gluten-free-double-chocochunk-walnut",
-      "total_price": 630,
-      "sub_total_price": 630,
-      "total_discount": 0,
-      "single_variant": false
-    }
-  ],
-  "checkout_url": "https://flexype.myshopify.com/?flx_s=331d47df-8461-495b-9c4f-27ed915d9c8e",
+  "webhook_id": "wh_123",
+  "shopify_domain": "my-store.myshopify.com",
+  "cart_items": [],
+  "checkout_url": "https://checkout.flexype.com/...",
   "discount": 0,
-  "total_payable": 630,
-  "session_state": "ADDRESS_LOADED",
+  "total_payable": 999,
+  "session_state": "INITIATED",
   "user": {
-    "phone_no": "7777788888",
+    "phone_no": "9876543210",
     "dial_code": "91",
-    "address": {
-      "address1": "A-11, Shakti Bhawan, Sailesh Vihar",
-      "address2": "",
-      "city": "Vadodara",
-      "state": "Gujarat",
-      "country": "India",
-      "state_code": "GJ",
-      "country_code": "IN",
-      "postal_code": "391101"
-    }
+    "name": "John Doe",
+    "email": "john@example.com",
+    "address": {}
   },
-  "store_link": "flexype.myshopify.com",
+  "store_link": "https://my-store.com",
+  "coupons": [],
   "client_meta": {
     "client_ip": "1.1.1.1",
-    "http_referer": "https://flexype.io",
-    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36"
+    "http_referer": "",
+    "user_agent": "",
+    "browser_fingerprint": ""
   },
-  "analytics": {
-    "fb": {
-      "fbc": "fb.1.1718171818181.1234567890",
-      "fbp": "fb.1.1749629739196.52545909099157380"
-    }
-  },
-  "metadata": {
-    "utm": [
-      {
-        "name": "utm_source",
-        "value": "Facebook_Mobile_Reels"
-      },
-      {
-        "name": "utm_medium",
-        "value": "Paid_Social"
-      },
-      {
-        "name": "utm_campaign",
-        "value": "SM_ToF_LuxuryTravel_MR28"
-      },
-      {
-        "name": "utm_content",
-        "value": "Video_THR&Q8"
-      },
-      {
-        "name": "fbclid",
-        "value": "IwZXh0bgNhZW0BMABhZGlkAasXP1Yg-jsBHsxu8sksf9L0IDtCbKwAtTELSmrMY-_SHwn507QuXkncpBXofqJes75cFFxX_aem_0HVwkeACTbIb2G8E87P0Xw"
-      },
-      {
-        "name": "utm_term",
-        "value": "120215375448050395"
-      }
-    ],
-    "orig_referer": "https://www.google.com",
-    "referer_host": "www.google.com",
-    "landing_page": "/"
-  }
+  "analytics": {},
+  "metadata": {}
 }
 ```
 </RequestExample>
+

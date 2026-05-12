@@ -1,0 +1,314 @@
+---
+title: Abandoned Checkout Recovery
+---
+
+The Abandoned Checkout Recovery Webhook is triggered whenever a checkout session is created or updated. It facilitates real-time synchronization of checkout data with external systems, enabling accurate tracking of active shopping sessions. This webhook plays a vital role in identifying potential checkout abandonment scenarios and allows businesses to automate recovery actions such as follow-up emails, whatsapp messages, personalized notifications, or remarketing efforts. By leveraging this integration, brands can engage customers at the right moment and significantly improve checkout conversion rates.
+
+### Headers
+
+<ParamField body="X-Flexype-Authorization" type="string">
+    A secret key used to verify that the webhook request originated from FlexyPe. Ensure this token is validated to prevent unauthorized access.
+</ParamField>
+<ParamField body="X-Webhook-Version" type="string">
+    The version of the webhook payload. Here, the value will be `2026-05`.
+</ParamField>
+<ParamField body="X-Webhook-Id" type="string">
+  The unique identifier of the webhook configured for your store.
+</ParamField>
+<ParamField body="X-Event-Id" type="string">
+  The unique identifier for the event that triggered this webhook.
+</ParamField>
+
+### Body
+
+<ResponseField name="event_time" type="string">
+    The ISO 8601 timestamp when the event occurred.
+</ResponseField>
+
+<ResponseField name="event_type" type="string">
+    The type of event. For this webhook, it is `ACR_CHECKOUT`.
+</ResponseField>
+
+<ResponseField name="event_id" type="string">
+    A unique identifier for the event.
+</ResponseField>
+
+<ResponseField name="store" type="object">
+    Information about the store where the event occurred.
+    <Expandable title="Store Properties">
+        <ResponseField name="id" type="string">
+            Unique identifier for the store.
+        </ResponseField>
+        <ResponseField name="name" type="string">
+            Name of the store.
+        </ResponseField>
+        <ResponseField name="shopify_domain" type="string">
+            The Shopify domain of the store (e.g., `store.myshopify.com`).
+        </ResponseField>
+        <ResponseField name="main_domain" type="string">
+            The primary domain of the store.
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<ResponseField name="payload" type="object">
+    The event-specific data.
+    <Expandable title="Payload Properties">
+        <ResponseField name="user" type="object">
+            Customer information captured during checkout.
+            <Expandable title="User Properties">
+                <ResponseField name="email" type="string">
+                    The customer's email address.
+                </ResponseField>
+                <ResponseField name="full_name" type="string">
+                    The customer's full name.
+                </ResponseField>
+                <ResponseField name="first_name" type="string">
+                    The customer's first name.
+                </ResponseField>
+                <ResponseField name="last_name" type="string">
+                    The customer's last name.
+                </ResponseField>
+                <ResponseField name="dial_code" type="string">
+                    The country dial code (e.g., `91`).
+                </ResponseField>
+                <ResponseField name="phone" type="string">
+                    The customer's phone number.
+                </ResponseField>
+                <ResponseField name="phone_with_dial_code" type="string">
+                    The phone number including the dial code.
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+
+        <ResponseField name="checkout_url" type="string">
+            The URL to redirect the user to the FlexyPe checkout page.
+        </ResponseField>
+
+        <ResponseField name="cart_items" type="array">
+            List of items in the cart.
+            <Expandable title="Cart Item Properties">
+                <ResponseField name="image" type="string">
+                    URL of the product image.
+                </ResponseField>
+                <ResponseField name="title" type="string">
+                    Title of the product.
+                </ResponseField>
+                <ResponseField name="discount" type="number">
+                    Discount amount applied to this item.
+                </ResponseField>
+                <ResponseField name="price" type="number">
+                    Price of the item after discounts.
+                </ResponseField>
+                <ResponseField name="quantity" type="number">
+                    Quantity of the item.
+                </ResponseField>
+                <ResponseField name="product_id" type="number">
+                    Shopify product ID.
+                </ResponseField>
+                <ResponseField name="variant_id" type="number">
+                    Shopify variant ID.
+                </ResponseField>
+                <ResponseField name="grams" type="number">
+                    Weight of the item in grams.
+                </ResponseField>
+                <ResponseField name="handle" type="string">
+                    Shopify product handle.
+                </ResponseField>
+                <ResponseField name="total_price" type="number">
+                    Total price for this item (price * quantity).
+                </ResponseField>
+                <ResponseField name="sub_total_price" type="number">
+                    Subtotal price before discounts.
+                </ResponseField>
+                <ResponseField name="total_discount" type="number">
+                    Total discount applied to this item.
+                </ResponseField>
+                <ResponseField name="single_variant" type="boolean">
+                    Whether the product has only one variant.
+                </ResponseField>
+                <ResponseField name="properties" type="array">
+                    Custom properties associated with the item.
+                </ResponseField>
+                <ResponseField name="variant" type="object">
+                    Variant details.
+                    <Expandable title="Variant Properties">
+                        <ResponseField name="title" type="string">
+                            Variant title.
+                        </ResponseField>
+                        <ResponseField name="price" type="number">
+                            Variant price.
+                        </ResponseField>
+                        <ResponseField name="variant_id" type="number">
+                            Variant ID.
+                        </ResponseField>
+                        <ResponseField name="compare_at_price" type="number">
+                            Original price before discount.
+                        </ResponseField>
+                    </Expandable>
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+
+
+        <ResponseField name="session_state" type="string">
+            Current state of the checkout session.
+            **Possible values:**
+            - `INITIATED`: Cart session has been created but no user input has been provided.
+            - `PHONE_ENTERED`: User has entered a phone number.
+            - `OTP_VERIFIED`: User has successfully verified the OTP.
+            - `ADDRESS_LOADED`: Address screen has been rendered or prefilled.
+            - `ADDRESS_SHIPPING_SELECTED`: Shipping method has been selected after address submission.
+            - `PAYMENT_LOADED`: Payment screen has been rendered.
+            - `PAYMENT_INITIATED`: Payment has been initiated by the user.
+            - `COMPLETED`: Order has been successfully completed.
+        </ResponseField>
+
+        <ResponseField name="coupons" type="array">
+            List of applied coupons.
+            <Expandable title="Coupon Properties">
+                <ResponseField name="code" type="string">
+                    Coupon code.
+                </ResponseField>
+                <ResponseField name="discount_amount" type="number">
+                    Discount amount applied by this coupon.
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+
+        <ResponseField name="client_meta" type="object">
+            Metadata about the client’s device and request.
+            <Expandable title="Client Meta Properties">
+                <ResponseField name="client_ip" type="string">
+                    IP address of the client.
+                </ResponseField>
+                <ResponseField name="http_referer" type="string">
+                    HTTP referer URL.
+                </ResponseField>
+                <ResponseField name="user_agent" type="string">
+                    Browser user agent.
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+
+        <ResponseField name="metadata" type="Metadata Object">
+    Metadata captured from the user's landing page and original source. This is typically used for attribution, analytics, and campaign performance tracking.
+
+    <Expandable title="properties">
+        <ResponseField name="utm" type="array">
+            An array of key–value pairs representing UTM and tracking parameters passed in the landing page URL.
+
+            **Allowed keys:**
+            - `fbclid`: Facebook Click ID
+            - `gclid`: Google Ads Click Identifier
+            - `utm_medium`: Type of marketing channel
+            - `utm_source`: Origin platform
+            - `utm_campaign`: Campaign name or identifier
+            - `utm_content`: Specific content or creative used
+            - `utm_term`: Paid search keyword or targeting term
+
+            <Expandable title="UTM Parameter Properties">
+                <ResponseField name="name" type="string">
+                    One of the allowed analytics parameter keys listed above.
+                </ResponseField>
+
+                <ResponseField name="value" type="string">
+                    The value associated with the given analytics parameter.
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+
+        <ResponseField name="orig_referer" type="string">
+            The original referrer URL from which the user landed on the store.
+        </ResponseField>
+
+        <ResponseField name="referer_host" type="string">
+            The host domain extracted from the original referrer URL.
+        </ResponseField>
+
+        <ResponseField name="landing_page" type="string">
+            The specific page path on the store where the user first landed.
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+        <ResponseField name="analytics" type="Analytics Object">
+            Data related to marketing and tracking attribution.
+            <Expandable title="properties">
+                <ResponseField name="fb.fbp" type="string">
+                    Facebook browser ID (FBP) for retargeting and attribution.
+                </ResponseField>
+            </Expandable>
+        </ResponseField>
+    </Expandable>
+</ResponseField>
+
+<RequestExample>
+```json Response
+{
+  "event_time": "2026-05-07T10:00:00Z",
+  "event_type": "ACR_CHECKOUT",
+  "event_id": "evt_123456789",
+  "store": {
+    "id": "store_01",
+    "name": "My Awesome Store",
+    "shopify_domain": "my-store.myshopify.com",
+    "main_domain": "my-store.com"
+  },
+  "payload": {
+    "user": {
+      "email": "john.doe@example.com",
+      "full_name": "John Doe",
+      "first_name": "John",
+      "last_name": "Doe",
+      "dial_code": "91",
+      "phone": "9876543210",
+      "phone_with_dial_code": "+919876543210"
+    },
+    "checkout_url": "https://checkout.flexype.com/c/abc123xyz",
+    "cart_items": [
+      {
+        "image": "https://cdn.shopify.com/products/item.jpg",
+        "title": "Cool T-Shirt",
+        "discount": 0,
+        "price": 999,
+        "quantity": 1,
+        "product_id": 12345,
+        "variant_id": 67890,
+        "grams": 200,
+        "handle": "cool-t-shirt",
+        "total_price": 999,
+        "sub_total_price": 999,
+        "total_discount": 0,
+        "single_variant": true,
+        "properties": [],
+        "variant": {
+          "title": "Large / Red",
+          "price": 999,
+          "variant_id": 67890,
+          "compare_at_price": 1200
+        }
+      }
+    ],
+    "session_state": "PHONE_ENTERED",
+    "coupons": [],
+    "client_meta": {
+      "client_ip": "1.1.1.1",
+      "http_referer": "https://google.com",
+      "user_agent": "Mozilla/5.0..."
+    },
+    "metadata": {
+      "orig_referer": "https://google.com",
+      "referer_host": "google.com",
+      "landing_page": "/products/cool-t-shirt",
+      "utm": []
+    },
+    "analytics": {
+      "fb": {
+        "fbp": "fb.1.12345.6789"
+      }
+    }
+  }
+}
+```
+</RequestExample>

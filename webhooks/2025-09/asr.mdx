@@ -2,15 +2,27 @@
 title: Abandoned Session Recovery
 ---
 
-The Abandoned Session Recovery Webhook is triggered when a visitor browses your store and demonstrates engagement without initiating checkout. This webhook captures browsing behavior, page visits, and any contact information provided during the session. It enables businesses to identify high-intent visitors early in their journey and engage them with personalized messaging, retargeting campaigns, or incentives before they leave the site. By leveraging this data, brands can reduce early-stage drop-offs and convert browsers into buyers.
+The Abandoned Session Recovery webhook is triggered when a visitor browses your store and shows engagement but does not initiate a checkout session. If no checkout session is created within 15 minutes of their last activity, this webhook fires automatically.
+This webhook captures browsing behavior, page visits, and any contact information provided during the session — enabling you to identify high-intent visitors early in their journey and engage them with personalized messaging, retargeting campaigns, or incentives before they leave.
+By leveraging this data, brands can reduce early-stage drop-offs and convert browsers into buyers.
 
 ### Headers
 
 <ParamField body="X-Flexype-Authorization" type="string">
     A secret key used to verify that the webhook request originated from FlexyPe. Ensure this token is validated to prevent unauthorized access.
 </ParamField>
+<ParamField body="X-Webhook-Version" type="string">
+    The version of the webhook payload. Here, the value will be `2025-09`.
+</ParamField>
+<ParamField body="X-Webhook-Id" type="string">
+  The unique identifier of the webhook configured for your store.
+</ParamField>
+<ParamField body="X-Event-Id" type="string">
+  The unique identifier for the event that triggered this webhook.
+</ParamField>
 
 ### Body
+
 
 <ParamField body="merchant_id" type="string">
     Unique identifier for the merchant's store in FlexyPe.
@@ -140,72 +152,30 @@ The Abandoned Session Recovery Webhook is triggered when a visitor browses your 
     ISO 8601 formatted timestamp of the visitor's last activity in the session.
 </ParamField>
 
-
 <RequestExample>
 ```json Response
 {
-  "merchant_id": "12554340-1b6a-496c-5651-24bd9ef56bb4",
-  "shopify_domain": "flexype.myshopify.com",
+  "merchant_id": "123",
+  "shopify_domain": "my-store.myshopify.com",
   "user": {
-    "full_name": "Roshan Kumar Chatei",
-    "phone": "7777788888",
+    "full_name": "Jane Doe",
+    "phone": "9876543210",
     "dial_code": "91",
-    "email": "roshan@example.com"
+    "email": "jane@example.com"
   },
-  "cart_items": [
-    {
-      "product_id": 7516974022740,
-      "variant_id": 41564857663572,
-      "quantity": 1,
-      "properties": {
-        "color": "red"
-      }
-    }
-  ],
+  "cart_items": [],
   "client_meta": {
-    "client_ip": "103.45.67.89",
-    "http_referer": "https://www.google.com/search?q=premium+brownies",
-    "user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1"
+    "client_ip": "1.1.1.1",
+    "http_referer": "",
+    "user_agent": ""
   },
-  "metadata": {
-    "utm": [
-      {
-        "name": "utm_source",
-        "value": "google"
-      },
-      {
-        "name": "utm_medium",
-        "value": "cpc"
-      },
-      {
-        "name": "utm_campaign",
-        "value": "holiday_sale_2025"
-      },
-      {
-        "name": "gclid",
-        "value": "Cj0KCQiA1sucBhDgARIsAFoytUvXYZ..."
-      }
-    ],
-    "orig_referer": "https://www.google.com",
-    "referer_host": "www.google.com",
-    "landing_page": "/collections/brownies"
-  },
-  "pages": [
-    {
-      "url": "https://flexype.myshopify.com/collections/brownies",
-      "timestamp": "2025-12-08T14:25:00Z"
-    },
-    {
-      "url": "https://flexype.myshopify.com/products/gluten-free-double-chocochunk-walnut",
-      "timestamp": "2025-12-08T14:27:30Z"
-    },
-    {
-      "url": "https://flexype.myshopify.com/products/classic-fudge-brownie",
-      "timestamp": "2025-12-08T14:30:15Z"
-    }
-  ],
-  "last_page_visited": "https://flexype.myshopify.com/products/classic-fudge-brownie",
-  "last_activity_at": "2025-12-08T14:30:45Z"
+  "metadata": {},
+  "pages": [],
+  "products_viewed": [],
+  "collections_viewed": [],
+  "last_page_visited": "https://my-store.com/products/cool-t-shirt",
+  "last_activity_at": "2025-09-01T09:55:00Z"
 }
 ```
 </RequestExample>
+

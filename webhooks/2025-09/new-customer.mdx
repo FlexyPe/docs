@@ -9,28 +9,29 @@ The New Customer Webhook is triggered when a new customer is created in your sto
 <ParamField body="X-Flexype-Authorization" type="string">
     A secret key used to verify that the webhook request originated from FlexyPe. Ensure this token is validated to prevent unauthorized access.
 </ParamField>
+<ParamField body="X-Webhook-Version" type="string">
+    The version of the webhook payload. Here, the value will be `2025-09`.
+</ParamField>
+<ParamField body="X-Webhook-Id" type="string">
+  The unique identifier of the webhook configured for your store.
+</ParamField>
+<ParamField body="X-Event-Id" type="string">
+  The unique identifier for the event that triggered this webhook.
+</ParamField>
 
 ### Body
 
-<ParamField body="event_id" type="string">
-    Unique identifier for this webhook event.
-</ParamField>
-
-<ParamField body="event_type" type="string">
-    The type of event that triggered this webhook. Value: `new_customer`.
-</ParamField>
-
-<ParamField body="timestamp" type="string">
-    ISO 8601 formatted timestamp of when the event was triggered.
-</ParamField>
-
-<ParamField body="store_domain" type="string">
+<ResponseField name="store_domain" type="string">
     The Shopify domain/subdomain for the merchant store.
-</ParamField>
+</ResponseField>
 
-<ResponseField name="customer" type="Customer Object">
+<ResponseField name="shopify_domain" type="string">
+    The Shopify domain for the merchant store.
+</ResponseField>
+
+<ResponseField name="customer" type="object">
     Details of the newly created customer.
-    <Expandable title="properties">
+     <Expandable title="properties">
         <ResponseField name="shopify_customer_id" type="string">
             The globally unique Shopify identifier for the customer (GID format).
         </ResponseField>
@@ -57,20 +58,17 @@ The New Customer Webhook is triggered when a new customer is created in your sto
     </Expandable>
 </ResponseField>
 
-
 <RequestExample>
 ```json Response
 {
-  "event_id": "a1b2c3d4-5e6f-7890-abcd-ef1234567890",
-  "event_type": "new_customer",
-  "timestamp": "2025-12-08T14:35:22.169Z",
-  "store_domain": "flexype.myshopify.com",
+  "store_domain": "my-store.myshopify.com",
+  "shopify_domain": "my-store.myshopify.com",
   "customer": {
-    "shopify_customer_id": "gid://shopify/Customer/7894561230123",
-    "first_name": "John",
+    "shopify_customer_id": "gid://shopify/Customer/123456789",
+    "first_name": "Jane",
     "last_name": "Doe",
-    "email": "john.doe@example.com",
-    "phone": "+917777788888",
+    "email": "jane@example.com",
+    "phone": "9876543210",
     "dial_code": "91"
   }
 }
