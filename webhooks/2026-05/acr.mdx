@@ -26,7 +26,7 @@ The Abandoned Checkout Recovery Webhook is triggered whenever a checkout session
 </ResponseField>
 
 <ResponseField name="event_type" type="string">
-    The type of event. For this webhook, it is `ACR_CHECKOUT`.
+    The type of event. For this webhook, it is `ABANDONED_CHECKOUT`.
 </ResponseField>
 
 <ResponseField name="event_id" type="string">
@@ -247,7 +247,7 @@ The Abandoned Checkout Recovery Webhook is triggered whenever a checkout session
 ```json Response
 {
   "event_time": "2026-05-07T10:00:00Z",
-  "event_type": "ACR_CHECKOUT",
+  "event_type": "ABANDONED_CHECKOUT",
   "event_id": "evt_123456789",
   "store": {
     "id": "store_01",

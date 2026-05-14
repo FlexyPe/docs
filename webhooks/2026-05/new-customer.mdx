@@ -26,7 +26,7 @@ The New Customer Webhook is triggered when a new customer is created in your sto
 </ResponseField>
 
 <ResponseField name="event_type" type="string">
-    The type of event. For this webhook, it is `NEW_CUSTOMER`.
+    The type of event. For this webhook, it is `CUSTOMER_CREATED`.
 </ResponseField>
 
 <ResponseField name="event_id" type="string">
@@ -91,7 +91,7 @@ The New Customer Webhook is triggered when a new customer is created in your sto
 ```json Response
 {
   "event_time": "2026-05-07T10:00:00Z",
-  "event_type": "NEW_CUSTOMER",
+  "event_type": "CUSTOMER_CREATED",
   "event_id": "evt_789123456",
   "store": {
     "id": "store_01",
